@@ -1,9 +1,11 @@
 package view;
 
+import javafx.concurrent.Task;
+
 /**
  * Created by User on 22.06.2015.
  */
-public class GuiTaskSendingMessage {
+public class GuiTaskSendingMessage extends Task {
 
 
     private String message;
@@ -11,7 +13,12 @@ public class GuiTaskSendingMessage {
         this.message=message;
     }
 
-    public String getMessage() {
+    @Override
+    protected Object call() throws Exception {
+        return null;
+    }
+
+    public String takeMessage() {
         return message;
     }
 

@@ -9,6 +9,6 @@ import model.ObserverOfMessage;
 public interface ObservableGuiSendingMessage {
     void registerObserver(ObserverOfMessage o);
     void removeObserver(ObserverOfMessage o);
-    void notify(String message);
+    void notifySendingMessage(String message);
 
 }

@@ -11,7 +11,7 @@ public class TaskClientServerConnector extends Task implements model.ObserverOfM
 
     public TaskClientServerConnector(model.ClientServerConnector clientServerConnector, view.Gui gui){
         this.clientServerConnector=clientServerConnector;
-        this.gui=gui;
+
         //this.clientServerConnector.getInputMessage().registerObserver(this);
     }
 

@@ -16,13 +16,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.ObserverOfMessage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class Gui extends Application implements AppearanceOfEvent {
+public class Gui extends Application implements ObservableGuiSendingMessage {
 
-
-    private EventGuiOn eventGui;
 
     private TextArea commonChat = new TextArea();
     private TextArea sendingMessage = new TextArea();
@@ -45,6 +45,7 @@ public class Gui extends Application implements AppearanceOfEvent {
     private Task taskConnection;
     private Task taskSendMessage;
     private Task taskSendCoordinateOfAttack;
+    private ArrayList observers=new ArrayList();
 
 
 
@@ -174,18 +175,9 @@ public class Gui extends Application implements AppearanceOfEvent {
 
             @Override
             public void handle(Event event) {
+                System.out.println("DDHHJJ");
 
-
-                Service service = new Service<Void>() {
-
-                    @Override
-                    protected Task<Void> createTask() {
-                        // TODO Auto-generated method stub
-                        return taskSendMessage;
-                    }
-
-                };
-                service.start();
+                notifySendingMessage(sendingMessage.getText());
             }
         });
 
@@ -294,26 +286,8 @@ public class Gui extends Application implements AppearanceOfEvent {
     }
 
 
-    @Override
-    public void onAppearance(EventGuiOn eventGui) {
-        this.eventGui=eventGui;
 
-    }
 
-    @Override
-    public void drawIt(boolean[][] state) {
-
-    }
-
-    @Override
-    public void startListen() {
-
-    }
-
-    @Override
-    public void startConnect() {
-
-    }
 
     public Task getTaskSendCoordinateOfAttack() {
         return taskSendCoordinateOfAttack;
@@ -329,6 +303,26 @@ public class Gui extends Application implements AppearanceOfEvent {
 
     public void setTaskSendMessage(Task taskSendMessage) {
         this.taskSendMessage = taskSendMessage;
+    }
+
+    @Override
+    public void registerObserver(ObserverOfMessage o) {
+        observers.add(o);
+
+    }
+
+    @Override
+    public void removeObserver(ObserverOfMessage o) {
+
+    }
+
+    @Override
+    public void notifySendingMessage(String message) {
+        for (int i = 0; i < observers.size(); i++) {
+            ObserverOfMessage observer = (ObserverOfMessage) observers.get(i);
+            observer.update(message);
+        }
+
     }
 }
 

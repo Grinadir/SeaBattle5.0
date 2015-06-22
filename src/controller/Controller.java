@@ -10,15 +10,15 @@ import view.EventGuiOn;
 /**
  * Created by User on 17.06.2015.
  */
-public class Controller extends Application implements model.ObserverOfMap, model.ObserverOfMessage {
+public class Controller extends Application implements model.ObserverOfMap, model.ObserverOfMessage, view.ObserverOfGuiSendingMessage {
     view.Gui gui;
-
+    model.ClientServerConnector clientServerConnector;
     public Controller(){
         this.gui=new view.Gui();
-        model.ClientServerConnector clientServerConnector=new ClientServerConnector();
+        clientServerConnector=new ClientServerConnector();
         TaskClientServerConnector taskClientServerConnector=new TaskClientServerConnector(clientServerConnector, gui);
         gui.setTaskConnection(taskClientServerConnector);
-        gui.setTaskSendMessage(new model.SendingMessage(clientServerConnector));
+        //gui.setTaskSendMessage(new TaskSendingMessage(clientServerConnector));
         System.out.println(taskClientServerConnector.getValue());
         clientServerConnector.registerObserver(this);
     }
@@ -31,12 +31,6 @@ public class Controller extends Application implements model.ObserverOfMap, mode
         //clientServerConnector.registerObserver(taskClientServerConnector);
 
 
-        gui.onAppearance(new EventGuiOn() {
-            @Override
-            public void eventGui(String string) {
-
-            }
-        });
 
         gui.start(primaryStage);
 
@@ -67,6 +61,12 @@ public class Controller extends Application implements model.ObserverOfMap, mode
     @Override
     public void update(String string) {
         gui.setTextInCommonChat(string);
-        System.out.println("HHHHHHHHHH");
+
+    }
+
+    @Override
+    public void updateGuiSendingMessage(String string) {
+        new TaskSendingMessage(clientServerConnector);
+        System.out.println("updateGuiSendingMessage");
     }
 }

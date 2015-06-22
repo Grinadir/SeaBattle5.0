@@ -5,13 +5,11 @@ package model;
  */
 
 
-import javafx.concurrent.Task;
-
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Date;
 
-public class SendingMessage extends Task {
+public class SendingMessage {
 
 
     private Date currentDate = new Date();
@@ -23,10 +21,10 @@ public class SendingMessage extends Task {
     }
 
 
-    @Override
-    protected Void call() throws Exception {
+
+    public void call() throws Exception {
         mainFunctionOutputMessage();
-        return null;
+
     }
 
     private void mainFunctionOutputMessage() {
@@ -42,7 +40,7 @@ public class SendingMessage extends Task {
     private void outputAndUpdateMess(DataOutputStream out, String whoClientOrServer) {
         try {
             String message = String.format("%s (%s):%s", whoClientOrServer, sendingMessage);
-            updateMessage(message);
+            //updateMessage(message);
             out.writeUTF(message);
         } catch (IOException e1) {
             // TODO Auto-generated catch block

@@ -7,12 +7,13 @@ import javafx.concurrent.Task;
  */
 public class ServiceStartConnector extends Task {
     Object object;
-    public ServiceStartConnector(){
+
+    public ServiceStartConnector() {
 
     }
 
-    public void setObject(Object object){
-        this.object=object;
+    public void setObject(Object object) {
+        this.object = object;
     }
 
     @Override

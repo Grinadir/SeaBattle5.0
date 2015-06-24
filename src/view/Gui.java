@@ -6,6 +6,8 @@ package view;
 
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.Event;
@@ -16,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import model.ObserverOfMessage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,41 +42,20 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
         return rects;
     }
 
-    private Rects rects=new Rects(this);
+    private Rects rects = new Rects(this);
     private Task taskConnection;
     private Task taskSendMessage;
     private Task taskSendCoordinateOfAttack;
-    private ArrayList observers=new ArrayList();
-
-
-
-    public void setTaskConnection(Task taskConnection) {
-        this.taskConnection = taskConnection;
-    }
-
-
-
-
-    public Task getTaskConnection() {
-        return taskConnection;
-    }
-
-
-
-    public ServiceStartConnector getServiceStartConnector() {
-        return serviceStartConnector;
-    }
-
-    ServiceStartConnector serviceStartConnector=new ServiceStartConnector();
-
-
-
+    private ArrayList observers = new ArrayList();
     private GridPane mySeaField = new GridPane();
     private GridPane myPane = new GridPane();
     private GridPane enemySeaField = new GridPane();
     private GridPane shipType = new GridPane();
 
 
+    public void setTaskConnection(Task taskConnection) {
+        this.taskConnection = taskConnection;
+    }
 
     public static void main(String[] args) throws Exception {
         launch(args);
@@ -130,11 +110,27 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
         myPane.add(bStart, 0, 14, 5, 1);
 
 
-
         bStart.setOnMouseClicked(new EventHandler<Event>() {
 
             @Override
             public void handle(Event event) {
+
+
+                taskConnection.messageProperty().addListener(
+                        new ChangeListener<String>() {
+
+                            @Override
+                            public void changed(
+                                    ObservableValue<? extends String> observable,
+                                    String oldValue, String newValue) {
+
+                                //String tempString = taskConnection.getMessage();
+                                Gui.this.setTextInCommonChat(taskConnection.getMessage());
+                                //new GuiWorkWithIncomingMessage(engine, connector).main(tempString);
+                                //statusLabelOfStep();
+
+                            }
+                        });
                 // Создание класса Task, существующий для работы с JavaFX
                 //commonChat.setText("Begin connection");
                 Service service = new Service<Void>() {
@@ -157,7 +153,6 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
             public void handle(Event event) {
 
 
-
                 Service service = new Service<Void>() {
 
                     @Override
@@ -175,7 +170,6 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
 
             @Override
             public void handle(Event event) {
-                System.out.println("DDHHJJ");
 
                 notifySendingMessage(sendingMessage.getText());
             }
@@ -286,9 +280,6 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
     }
 
 
-
-
-
     public Task getTaskSendCoordinateOfAttack() {
         return taskSendCoordinateOfAttack;
     }
@@ -306,21 +297,21 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
     }
 
     @Override
-    public void registerObserver(ObserverOfMessage o) {
+    public void registerObserver(ObserverOfGuiSendingMessage o) {
         observers.add(o);
 
     }
 
     @Override
-    public void removeObserver(ObserverOfMessage o) {
+    public void removeObserver(ObserverOfGuiSendingMessage o) {
 
     }
 
     @Override
     public void notifySendingMessage(String message) {
         for (int i = 0; i < observers.size(); i++) {
-            ObserverOfMessage observer = (ObserverOfMessage) observers.get(i);
-            observer.update(message);
+            ObserverOfGuiSendingMessage observer = (ObserverOfGuiSendingMessage) observers.get(i);
+            observer.updateGuiSendingMessage(message);
         }
 
     }

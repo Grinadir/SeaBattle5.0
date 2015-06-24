@@ -12,13 +12,13 @@ public class LogicMarked implements ObservableMap {
 
     private ArrayList observers;
 
-    public LogicMarked(Map map){
-        observers=new ArrayList();
-        this.map=map;
+    public LogicMarked(Map map) {
+        observers = new ArrayList();
+        this.map = map;
     }
 
     public void setColorYellowRect(int x, int y) {
-        if (!(map.getCellMY(x, y).getFettle().equals("ship") && !(map.getCellMY(x, y).getFettle().equals("nearship")))){
+        if (!(map.getCellMY(x, y).getFettle().equals("ship") && !(map.getCellMY(x, y).getFettle().equals("nearship")))) {
             map.getCellMY(x, y).setFettle("nearship");
             notify(x, y, "nearship");
         }

@@ -29,7 +29,7 @@ public class SystemOfIncomingMessage {
     private void waitingForIncomingMessage(InputStream inputStream) throws IOException {
         DataInputStream stream = new DataInputStream(inputStream);
         while (true) {
-            inputMessage=new InputMessage(connector, stream);
+            inputMessage = new InputMessage(connector, stream);
             inputMessage.inputMessageHandler();
         }
     }

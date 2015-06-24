@@ -5,19 +5,17 @@ package model;
  */
 
 
-
-
 import java.io.IOException;
 import java.net.SocketException;
 import java.util.ArrayList;
 
-public class ClientServerConnector implements ObservableMessage {
+public class ClientServerConnector implements ObservableModelIncomingMessage {
     private Server server;
     private Client client;
     private SystemOfIncomingMessage systemOfIncomingMessage;
     private ArrayList observers;
 
-    public ClientServerConnector(){
+    public ClientServerConnector() {
         observers = new ArrayList();
     }
 
@@ -30,10 +28,8 @@ public class ClientServerConnector implements ObservableMessage {
     }
 
 
-
     private void tryFunctionToConnection() throws IOException, InterruptedException {
         do {
-            System.out.println("{JGFGFGFGFGFGFGFG");
             server.serverWorking();
             if (server.isClosed()) {
                 try {
@@ -47,7 +43,7 @@ public class ClientServerConnector implements ObservableMessage {
         while (server.isClosed() && client.getClientSocket() == null);
     }
 
-    public void updateMessage(String message){
+    public void updateMessage(String message) {
         notify(message);
     }
 
@@ -59,25 +55,25 @@ public class ClientServerConnector implements ObservableMessage {
         return client;
     }
 
-    public InputMessage getInputMessage(){
+    public InputMessage getInputMessage() {
         return systemOfIncomingMessage.getInputMessage();
     }
 
     @Override
-    public void registerObserver(ObserverOfMessage o) {
+    public void registerObserver(ObserverOfModelIncomingMessage o) {
         observers.add(o);
 
     }
 
     @Override
-    public void removeObserver(ObserverOfMessage o) {
+    public void removeObserver(ObserverOfModelIncomingMessage o) {
 
     }
 
     @Override
     public void notify(String message) {
         for (int i = 0; i < observers.size(); i++) {
-            ObserverOfMessage observer = (ObserverOfMessage) observers.get(i);
+            ObserverOfModelIncomingMessage observer = (ObserverOfModelIncomingMessage) observers.get(i);
             observer.update(message);
         }
 

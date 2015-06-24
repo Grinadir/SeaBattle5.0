@@ -6,7 +6,7 @@ package model;
 public interface Model {
     public void setEnemyMessage();
 
-    public  void setMyMessage();
+    public void setMyMessage();
 
     public void getState();
 }

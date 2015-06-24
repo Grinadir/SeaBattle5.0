@@ -10,9 +10,10 @@ public class TaskSendingMessage extends Task {
 
     private model.SendingMessage sendingMessage;
     private model.ClientServerConnector clientServerConnector;
-    String message;
-    public TaskSendingMessage(model.ClientServerConnector clientServerConnector){
-        this.sendingMessage=new model.SendingMessage(clientServerConnector);
+
+    public TaskSendingMessage(model.ClientServerConnector clientServerConnector, String strSendMess) {
+        this.clientServerConnector = clientServerConnector;
+        this.sendingMessage = new model.SendingMessage(clientServerConnector, strSendMess);
     }
 
     @Override

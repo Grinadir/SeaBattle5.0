@@ -7,6 +7,8 @@ package model;
 public interface ObservableMap {
 
     void registerObserver(ObserverOfMap o);
+
     void removeObserver(ObserverOfMap o);
+
     void notify(int x, int y, String fettle);
 }

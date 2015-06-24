@@ -1,41 +1,39 @@
 package controller;
 
 import javafx.application.Application;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.ClientServerConnector;
-import view.EventGuiOn;
+import model.ObserverOfModelIncomingMessage;
 
 
 /**
  * Created by User on 17.06.2015.
  */
-public class Controller extends Application implements model.ObserverOfMap, model.ObserverOfMessage, view.ObserverOfGuiSendingMessage {
-    view.Gui gui;
-    model.ClientServerConnector clientServerConnector;
-    public Controller(){
-        this.gui=new view.Gui();
-        clientServerConnector=new ClientServerConnector();
-        TaskClientServerConnector taskClientServerConnector=new TaskClientServerConnector(clientServerConnector, gui);
+public class Controller extends Application implements model.ObserverOfMap, ObserverOfModelIncomingMessage, view.ObserverOfGuiSendingMessage {
+    private view.Gui gui;
+    private model.ClientServerConnector clientServerConnector;
+    private TaskClientServerConnector taskClientServerConnector;
+
+    public Controller() {
+        this.gui = new view.Gui();
+        clientServerConnector = new ClientServerConnector();
+        taskClientServerConnector = new TaskClientServerConnector(clientServerConnector, gui);
         gui.setTaskConnection(taskClientServerConnector);
-        //gui.setTaskSendMessage(new TaskSendingMessage(clientServerConnector));
         System.out.println(taskClientServerConnector.getValue());
         clientServerConnector.registerObserver(this);
+        gui.registerObserver(this);
     }
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-
-        //clientServerConnector.registerObserver(taskClientServerConnector);
-
-
-
         gui.start(primaryStage);
-
     }
-    public static void main(String[]args){
+
+    public static void main(String[] args) {
         launch(args);
 
     }
@@ -44,15 +42,15 @@ public class Controller extends Application implements model.ObserverOfMap, mode
     public void update(int x, int y, String fettle) {
 
         if (fettle.equals("non")) {
-            gui.getRects().getMyRect(x,y).setFill(Color.GREEN);
+            gui.getRects().getMyRect(x, y).setFill(Color.GREEN);
         }
 
         if (fettle.equals("nearship")) {
-            gui.getRects().getMyRect(x,y).setFill(Color.YELLOW);
+            gui.getRects().getMyRect(x, y).setFill(Color.YELLOW);
         }
 
         if (fettle.equals("ship")) {
-            gui.getRects().getMyRect(x,y).setFill(Color.YELLOW);
+            gui.getRects().getMyRect(x, y).setFill(Color.YELLOW);
         }
 
     }
@@ -60,13 +58,22 @@ public class Controller extends Application implements model.ObserverOfMap, mode
 
     @Override
     public void update(String string) {
-        gui.setTextInCommonChat(string);
-
+        taskClientServerConnector.updateMess(string);
     }
 
     @Override
     public void updateGuiSendingMessage(String string) {
-        new TaskSendingMessage(clientServerConnector);
-        System.out.println("updateGuiSendingMessage");
+
+        Service service = new Service<Void>() {
+
+            @Override
+            protected Task<Void> createTask() {
+                // TODO Auto-generated method stub
+                return new TaskSendingMessage(clientServerConnector, string);
+            }
+
+        };
+        service.start();
+
     }
 }

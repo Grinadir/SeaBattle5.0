@@ -37,12 +37,15 @@ public class Server {
     public boolean isClosed() {
         return (serverSocket == null || serverSocket.isClosed());
     }
+
     public InputStream getInputServerStream() {
         return inputServerStream;
     }
+
     public OutputStream getOutputServerStream() {
         return outputServerStream;
     }
+
     //It,s remain while
     public String getStatusServerSocket() {
         if (serverSocket != null) {

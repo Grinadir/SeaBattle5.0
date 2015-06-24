@@ -4,7 +4,7 @@ package model;
 /**
  * Created by User on 23.04.2015.
  */
-public class Engine  {
+public class Engine {
 
     private Status status;
     //private Rects rects;
@@ -42,13 +42,13 @@ public class Engine  {
 
     public Engine() throws Exception {
         //this.gui = gui;
-        this.map=new Map(this);
-        this.logicMarked=new LogicMarked(map);
+        this.map = new Map(this);
+        this.logicMarked = new LogicMarked(map);
 
         //rects = new Rects(this, map, logicMarked);
         this.status = new Status();
-        this.clientServerConnector=new ClientServerConnector();
-        this.state=new State(map);
+        this.clientServerConnector = new ClientServerConnector();
+        this.state = new State(map);
     }
 
     public InterfaceShip[] getShipSingle() {
@@ -230,13 +230,14 @@ public class Engine  {
     }
 
     //public Gui getGui() {
-     //   return gui;
+    //   return gui;
     //}
 
-    public Map getMap(){
+    public Map getMap() {
         return map;
     }
-    public LogicMarked getLogicMarked(){
+
+    public LogicMarked getLogicMarked() {
         return logicMarked;
     }
 }

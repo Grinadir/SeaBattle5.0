@@ -3,7 +3,7 @@ package view;
 import javafx.scene.paint.Color;
 
 
-public class Rects  {
+public class Rects {
 
     //private Engine engine;
     private MyRectangle[] rectMY = new MyRectangle[100];
@@ -11,7 +11,7 @@ public class Rects  {
     private Gui gui;
 
     public Rects(Gui gui) {
-        this.gui=gui;
+        this.gui = gui;
 
 
     }

@@ -13,16 +13,15 @@ public class Map implements ObservableMap {
     private Cell[] cellENEMY = new Cell[100];
     private final int INDEX_END_SHIP = 4400;
     private ArrayList observers;
-    //private InterfaceShip ship;
     private final Engine engine;
     private Choose choose;
-    private final int OUT_OF_FIELD=18;
+    private final int OUT_OF_FIELD = 18;
 
     public Map(Engine engine) {
-        this.engine=engine;
+        this.engine = engine;
         makeEnemyAndMyCells();
         observers = new ArrayList();
-        this.choose=new Choose();
+        this.choose = new Choose();
     }
 
     @Override
@@ -87,22 +86,22 @@ public class Map implements ObservableMap {
     }
 
     private boolean isSelectedSingleShip(int x, int y) {
-        return (choose.isOne()&&!cellMY[x+10*y].getFettle().equals("nearship"))
+        return (choose.isOne() && !cellMY[x + 10 * y].getFettle().equals("nearship"))
                 && engine.getOneAmount() != 0;
     }
 
     private boolean isSelectedDoubleShip(int x, int y) {
-        return (choose.isTwo()&&!cellMY[x+10*y].getFettle().equals("nearship"))
+        return (choose.isTwo() && !cellMY[x + 10 * y].getFettle().equals("nearship"))
                 && engine.getTwoAmount() != 0;
     }
 
     private boolean isSelectedTripleShip(int x, int y) {
-        return (choose.isThree()&&!cellMY[x+10*y].getFettle().equals("nearship"))
+        return (choose.isThree() && !cellMY[x + 10 * y].getFettle().equals("nearship"))
                 && engine.getThreeAmount() != 0;
     }
 
     private boolean isSelectedQuadrupleShip(int x, int y) {
-        return (choose.isFour()&&!cellMY[x+10*y].getFettle().equals("nearship"))
+        return (choose.isFour() && !cellMY[x + 10 * y].getFettle().equals("nearship"))
                 && engine.getFourAmount() != 0;
     }
 
@@ -198,13 +197,12 @@ public class Map implements ObservableMap {
         }
     }
 
-    public void checkAndMarkMyField(int x, int y){
+    public void checkAndMarkMyField(int x, int y) {
         if (cellMY[y * 10 + x].getFettle().equals("ship")) {
             cellMY[y * 10 + x].getShip().impairment();
             if (cellMY[x + 10 * y].getShip().isValidShip()) {
                 cellMY[y * 10 + x].setFettle("dam");
             } else if (!(cellMY[x + 10 * y].getShip().isValidShip())) {
-                //rects.getMyRect(x, y).setFill(Color.BLACK);
                 cellMY[y * 10 + x].setFettle("kill");
                 int lX = cellMY[x + 10 * y].getShip().getX1();
                 int lY = cellMY[x + 10 * y].getShip().getY1();
@@ -230,33 +228,26 @@ public class Map implements ObservableMap {
         }
     }
 
-    public void checkAndMarkEnemyField(int x, int y, String str, int ind1, int ind2, int ind3, int ind4){
-            if (str.equals("DAM")) {
-                //rects.getRectENEMY(x + (y * 10)).setFill(Color.ORANGE);
-                cellMY[y * 10 + x].setFettle("dam");
-            } else if (str.equals("DESTROY")) {
-                //rects.getRectENEMY(x + (y * 10)).setFill(Color.BLACK);
+    public void checkAndMarkEnemyField(int x, int y, String str, int ind1, int ind2, int ind3, int ind4) {
+        if (str.equals("DAM")) {
+            cellMY[y * 10 + x].setFettle("dam");
+        } else if (str.equals("DESTROY")) {
+            cellMY[y * 10 + x].setFettle("kill");
+            if (ind1 != INDEX_END_SHIP) {
                 cellMY[y * 10 + x].setFettle("kill");
-                if (ind1 != INDEX_END_SHIP) {
-                    //rects.getRectENEMY(ind1).setFill(Color.BLACK);
-                    cellMY[y * 10 + x].setFettle("kill");
-                }
-                if (ind2 != INDEX_END_SHIP) {
-                    //rects.getRectENEMY(ind2).setFill(Color.BLACK);
-                    cellMY[y * 10 + x].setFettle("kill");
-                }
-                if (ind3 != INDEX_END_SHIP) {
-                    //rects.getRectENEMY(ind3).setFill(Color.BLACK);
-                    cellMY[y * 10 + x].setFettle("kill");
-                }
-                if (ind4 != INDEX_END_SHIP) {
-                    //rects.getRectENEMY(ind4).setFill(Color.BLACK);
-                    cellMY[y * 10 + x].setFettle("kill");
-                }
-            } else if (str.equals("MISS")) {
-                cellMY[y * 10 + x].setFettle("miss");
-                //rects.getRectENEMY(x + (y * 10)).setFill(Color.YELLOW);
             }
+            if (ind2 != INDEX_END_SHIP) {
+                cellMY[y * 10 + x].setFettle("kill");
+            }
+            if (ind3 != INDEX_END_SHIP) {
+                cellMY[y * 10 + x].setFettle("kill");
+            }
+            if (ind4 != INDEX_END_SHIP) {
+                cellMY[y * 10 + x].setFettle("kill");
+            }
+        } else if (str.equals("MISS")) {
+            cellMY[y * 10 + x].setFettle("miss");
+        }
 
 
     }

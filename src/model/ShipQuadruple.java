@@ -82,7 +82,8 @@ public class ShipQuadruple implements InterfaceShip {
     }
 
     @Override
-    public void clean() {}
+    public void clean() {
+    }
 
     @Override
     public boolean isValidShip() {

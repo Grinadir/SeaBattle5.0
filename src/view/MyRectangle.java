@@ -5,8 +5,6 @@ package view;
  */
 
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.shape.Rectangle;
 
 
@@ -21,7 +19,7 @@ public class MyRectangle extends Rectangle {
     private int y;
     private int veto = 0;
 
-    public MyRectangle( double width, double height, int e) {
+    public MyRectangle(double width, double height, int e) {
         setWidth(width);
         setHeight(height);
 

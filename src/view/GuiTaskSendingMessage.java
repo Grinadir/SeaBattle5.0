@@ -9,8 +9,9 @@ public class GuiTaskSendingMessage extends Task {
 
 
     private String message;
-    public GuiTaskSendingMessage(String message){
-        this.message=message;
+
+    public GuiTaskSendingMessage(String message) {
+        this.message = message;
     }
 
     @Override

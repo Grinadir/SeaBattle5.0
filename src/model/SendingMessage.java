@@ -6,7 +6,6 @@ package model;
 
 
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.util.Date;
 
 public class SendingMessage {
@@ -16,13 +15,14 @@ public class SendingMessage {
     private ClientServerConnector connector;
     private String sendingMessage;
 
-    public SendingMessage( ClientServerConnector connector) {
+    public SendingMessage(ClientServerConnector connector, String sendingMessage) {
         this.connector = connector;
+        this.sendingMessage = sendingMessage;
     }
 
 
-
     public void call() throws Exception {
+        System.out.print("call");
         mainFunctionOutputMessage();
 
     }
@@ -39,10 +39,12 @@ public class SendingMessage {
 
     private void outputAndUpdateMess(DataOutputStream out, String whoClientOrServer) {
         try {
-            String message = String.format("%s (%s):%s", whoClientOrServer, sendingMessage);
-            //updateMessage(message);
-            out.writeUTF(message);
-        } catch (IOException e1) {
+            System.out.println("outputAndUpdateMess " + sendingMessage);
+            //FIXME String message = String.format("%s (%s):%s", whoClientOrServer, sendingMessage);
+            //FIXME updateMessage(message);
+            out.writeUTF(sendingMessage);
+            System.out.println("After outputAndUpdateMess " + sendingMessage);
+        } catch (Exception e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }

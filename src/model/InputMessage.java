@@ -43,7 +43,7 @@ public class InputMessage implements ObservableModelIncomingMessage {
     public void notify(String message) {
         for (int i = 0; i < observers.size(); i++) {
             ObserverOfModelIncomingMessage observer = (ObserverOfModelIncomingMessage) observers.get(i);
-            observer.update(message);
+            observer.updateModelIncomingMessage(message);
         }
 
     }

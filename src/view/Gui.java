@@ -171,7 +171,10 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
             @Override
             public void handle(Event event) {
 
+
+
                 notifySendingMessage(sendingMessage.getText());
+
             }
         });
 

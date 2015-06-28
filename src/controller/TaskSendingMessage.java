@@ -21,4 +21,8 @@ public class TaskSendingMessage extends Task {
         sendingMessage.call();
         return null;
     }
+
+    public void updateMess(String message){
+        this.updateMessage(message);
+    }
 }

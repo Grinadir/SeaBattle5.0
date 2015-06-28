@@ -22,7 +22,6 @@ public class SendingMessage {
 
 
     public void call() throws Exception {
-        System.out.print("call");
         mainFunctionOutputMessage();
 
     }

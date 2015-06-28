@@ -57,19 +57,21 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
 
 
     @Override
-    public void update(String string) {
+    public void updateModelIncomingMessage(String string) {
         taskClientServerConnector.updateMess(string);
     }
 
     @Override
-    public void updateGuiSendingMessage(String string) {
+    public void updateGuiSendingMessage(String sendingMessage) {
 
+        String message = String.format("%s :%s", clientServerConnector.getWhoClientOrServer(), sendingMessage);
+        gui.setTextInCommonChat(message);
         Service service = new Service<Void>() {
 
             @Override
             protected Task<Void> createTask() {
                 // TODO Auto-generated method stub
-                return new TaskSendingMessage(clientServerConnector, string);
+                return new TaskSendingMessage(clientServerConnector, sendingMessage);
             }
 
         };

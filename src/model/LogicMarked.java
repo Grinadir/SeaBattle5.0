@@ -86,7 +86,7 @@ public class LogicMarked implements ObservableMap {
     public void notify(int x, int y, String fettle) {
         for (int i = 0; i < observers.size(); i++) {
             ObserverOfMap observer = (ObserverOfMap) observers.get(i);
-            observer.update(x, y, fettle);
+            observer.updateModelMap(x, y, fettle);
         }
     }
 }

@@ -38,11 +38,6 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
     private RadioButton one = new RadioButton("One 4 pcs.");
     private Label whomStep = new Label();
 
-    public Rects getRects() {
-        return rects;
-    }
-
-    private Rects rects = new Rects(this);
     private Task taskConnection;
     private Task taskSendMessage;
     private Task taskSendCoordinateOfAttack;
@@ -51,14 +46,17 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
     private GridPane myPane = new GridPane();
     private GridPane enemySeaField = new GridPane();
     private GridPane shipType = new GridPane();
+    private Rects rects = new Rects(this);
+    public static void main(String[] args) throws Exception {
+        launch(args);
+    }
 
+    public Rects getRects() {
+        return rects;
+    }
 
     public void setTaskConnection(Task taskConnection) {
         this.taskConnection = taskConnection;
-    }
-
-    public static void main(String[] args) throws Exception {
-        launch(args);
     }
 
     @Override
@@ -149,6 +147,7 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
 
         fireButton.setOnMouseClicked(new EventHandler<Event>() {
 
+
             @Override
             public void handle(Event event) {
 
@@ -170,7 +169,6 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
 
             @Override
             public void handle(Event event) {
-
 
 
                 notifySendingMessage(sendingMessage.getText());
@@ -221,7 +219,7 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
             }
 
         });
-        rects.makeEnemyAndMyField();
+        //rects.makeEnemyAndMyField();
 
 
         Scene scene = new Scene(myPane, 500, 600);

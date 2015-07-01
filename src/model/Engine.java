@@ -7,12 +7,8 @@ package model;
 public class Engine {
 
     private Status status;
-    //private Rects rects;
-    //private Gui gui;
     private Map map;
     private LogicMarked logicMarked;
-    private ClientServerConnector clientServerConnector;
-    private State state;
 
     private InterfaceShip[] shipSingle = new ShipSingle[5];
     private InterfaceShip[] shipDouble = new ShipDouble[4];
@@ -40,15 +36,10 @@ public class Engine {
 
     private int targetIndex;
 
-    public Engine() throws Exception {
-        //this.gui = gui;
+    public Engine()  {
         this.map = new Map(this);
         this.logicMarked = new LogicMarked(map);
-
-        //rects = new Rects(this, map, logicMarked);
         this.status = new Status();
-        this.clientServerConnector = new ClientServerConnector();
-        this.state = new State(map);
     }
 
     public InterfaceShip[] getShipSingle() {

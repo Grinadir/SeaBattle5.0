@@ -5,19 +5,21 @@ import javafx.scene.paint.Color;
 
 public class Rects {
 
-    //private Engine engine;
     private MyRectangle[] rectMY = new MyRectangle[100];
     private EnemyRectangle[] rectENEMY = new EnemyRectangle[100];
     private Gui gui;
 
+
+
     public Rects(Gui gui) {
         this.gui = gui;
+        makeEnemyAndMyField();
 
 
     }
 
     private void makeOneIterationRectMY(int i) {
-        rectMY[i] = new MyRectangle(15, 15, i);
+        rectMY[i] = new MyRectangle(15, 15, gui);
         rectMY[i].setFill(Color.GREEN);
         int numLine = (int) (10 - (10 - i * 0.1));
         rectMY[i].setXinMyRect(i - numLine * 10);

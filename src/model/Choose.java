@@ -17,28 +17,28 @@ public class Choose implements Settings {
         four = false;
     }
 
-    void chooseOne() {
+    public void chooseOne() {
         one = true;
         two = false;
         three = false;
         four = false;
     }
 
-    void chooseTwo() {
+    public void chooseTwo() {
         one = false;
         two = true;
         three = false;
         four = false;
     }
 
-    void chooseThree() {
+    public void chooseThree() {
         one = false;
         two = false;
         three = true;
         four = false;
     }
 
-    void chooseFour() {
+    public void chooseFour() {
         one = false;
         two = false;
         three = false;
@@ -48,21 +48,21 @@ public class Choose implements Settings {
 
     @Override
     public boolean isOne() {
-        return false;
+        return one;
     }
 
     @Override
     public boolean isTwo() {
-        return false;
+        return two;
     }
 
     @Override
     public boolean isThree() {
-        return false;
+        return three;
     }
 
     @Override
     public boolean isFour() {
-        return false;
+        return four;
     }
 }

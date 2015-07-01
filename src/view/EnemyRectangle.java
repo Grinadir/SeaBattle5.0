@@ -8,7 +8,6 @@ import javafx.scene.shape.Rectangle;
 public class EnemyRectangle extends Rectangle {
     private int x;
     private int y;
-    //private Engine engine;
 
     public EnemyRectangle(double width, double height) {
 

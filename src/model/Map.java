@@ -14,6 +14,11 @@ public class Map implements ObservableMap {
     private final int INDEX_END_SHIP = 4400;
     private ArrayList observers;
     private final Engine engine;
+
+    public Choose getChoose() {
+        return choose;
+    }
+
     private Choose choose;
     private final int OUT_OF_FIELD = 18;
 
@@ -36,9 +41,10 @@ public class Map implements ObservableMap {
 
     @Override
     public void notify(int x, int y, String fettle) {
+        System.out.println("notifyMap");
         for (int i = 0; i < observers.size(); i++) {
             ObserverOfMap observer = (ObserverOfMap) observers.get(i);
-            observer.update(x, y, fettle);
+            observer.updateModelMap(x, y, fettle);
         }
 
     }
@@ -62,7 +68,8 @@ public class Map implements ObservableMap {
         }
     }
 
-    void mainFunctionInMap(int x, int y) {
+    public void mainFunctionInMap(int x, int y) {
+        System.out.println("mainfunction");
         int i = x + y * 10;
         if (engine.getOneAmount() == 0
                 && (!cellMY[i].getFettle().equals("nearship") && !cellMY[i].getFettle().equals("non"))) {
@@ -107,7 +114,7 @@ public class Map implements ObservableMap {
 
 
     //Extract-function for foundation ship
-    private void makeSingleShipInMap(int x, int y) {
+    public void makeSingleShipInMap(int x, int y) {
         engine.getShipSingle()[engine.getOneAmount()] = new ShipSingle(engine);
         cellMY[y * 10 + x].setShip(engine.getShipSingle()[engine.getOneAmount()]);
 

@@ -9,10 +9,8 @@ import javafx.concurrent.Task;
 public class TaskSendingMessage extends Task {
 
     private model.SendingMessage sendingMessage;
-    private model.ClientServerConnector clientServerConnector;
 
     public TaskSendingMessage(model.ClientServerConnector clientServerConnector, String strSendMess) {
-        this.clientServerConnector = clientServerConnector;
         this.sendingMessage = new model.SendingMessage(clientServerConnector, strSendMess);
     }
 
@@ -22,7 +20,7 @@ public class TaskSendingMessage extends Task {
         return null;
     }
 
-    public void updateMess(String message){
-        this.updateMessage(message);
+    public void updateMessage(String message) {
+        super.updateMessage(message);
     }
 }

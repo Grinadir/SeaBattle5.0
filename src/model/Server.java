@@ -30,7 +30,7 @@ public class Server {
         } catch (SocketTimeoutException e) {
             serverSocket.close();
         } catch (BindException e) {
-            e.printStackTrace();
+            //FIXME e.printStackTrace();
         }
     }
 

@@ -14,6 +14,8 @@ public class Map implements ObservableMap {
     private final int INDEX_END_SHIP = 4400;
     private ArrayList observers;
     private final Engine engine;
+    private int coordOfAttackX;
+    private int coordOfAttackY;
 
     public Choose getChoose() {
         return choose;
@@ -254,6 +256,25 @@ public class Map implements ObservableMap {
             }
         } else if (str.equals("MISS")) {
             cellMY[y * 10 + x].setFettle("miss");
+        }
+    }
+
+    public void selectTargetOfAttack(int x, int y){
+        if((coordOfAttackX!=x)||(coordOfAttackY!=y)){
+            notify(coordOfAttackX, coordOfAttackY, "undoAttack");
+            coordOfAttackX=x;
+            coordOfAttackY=y;
+            notify(coordOfAttackX, coordOfAttackY, "Attack");
+        }else if((coordOfAttackX==x)&&(coordOfAttackY==y)){
+            if(coordOfAttackY==440&&coordOfAttackY==440){
+                coordOfAttackX=x;
+                coordOfAttackY=y;
+                notify(coordOfAttackX, coordOfAttackY, "Attack");
+            }else {
+                notify(coordOfAttackX, coordOfAttackY, "undoAttack");
+                coordOfAttackX = 440;
+                coordOfAttackY = 440;
+            }
         }
 
 

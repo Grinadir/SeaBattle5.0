@@ -13,7 +13,7 @@ import model.ObserverOfModelIncomingMessage;
 /**
  * Created by User on 17.06.2015.
  */
-public class Controller extends Application implements model.ObserverOfMap, ObserverOfModelIncomingMessage, view.ObserverOfGuiSendingMessage, view.ObserverOfGuiMyRectangle {
+public class Controller extends Application implements model.ObserverOfMap, ObserverOfModelIncomingMessage, view.ObserverOfGuiSendingMessage, view.ObserverOfGuiMyRectangle, view.ObserverOfGuiEnemyRectangle {
     private view.Gui gui;
     private model.ClientServerConnector clientServerConnector;
     private TaskClientServerConnector taskClientServerConnector;
@@ -31,11 +31,18 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
         engine.getMap().registerObserver(this);
         engine.getLogicMarked().registerObserver(this);
 
-
-        System.out.println(gui.getRects().getMyRect(1, 1) == null);
         for (int i = 0; i <= 99; ++i) {
-            makeOneRegister(i);
+            makeOneMyRegister(i);
         }
+        for (int i = 0; i <= 99; ++i) {
+            makeOneEnemyRegister(i);
+        }
+    }
+
+    private void makeOneEnemyRegister(int i) {
+        gui.getRects().
+                getRectENEMY(i).
+                registerObserver(this);
     }
 
 
@@ -65,6 +72,14 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
         if (fettle.equals("ship")) {
             gui.getRects().getMyRect(x, y).setFill(Color.BLUE);
         }
+        if (fettle.equals("undoAttack")){
+            System.out.println("undoAttack");
+            gui.getRects().getRectENEMY(y*10+x).setFill(Color.GREEN);
+        }
+        if(fettle.equals("Attack")){
+            System.out.println("Attack");
+            gui.getRects().getRectENEMY(y*10+x).setFill(Color.RED);
+        }
 
     }
 
@@ -89,7 +104,6 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
 
         };
         service.start();
-
     }
 
     @Override
@@ -105,12 +119,9 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
             engine.getMap().getChoose().chooseFour();
         }
         engine.getMap().mainFunctionInMap(x, y);
-
-
-
     }
 
-    private void makeOneRegister(int i) {
+    private void makeOneMyRegister(int i) {
         int y = (int) (10 - (10 - i * 0.1));
         int x= i - y * 10;
         gui.getRects().
@@ -118,4 +129,9 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
                 registerObserver(this);
     }
 
+    @Override
+    public void updateGuiAttackCoordinate(int x, int y) {
+        System.out.println("updateGuiAttackCoordinate");
+        engine.getMap().selectTargetOfAttack(x, y);
+    }
 }

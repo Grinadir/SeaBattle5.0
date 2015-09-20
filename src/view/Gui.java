@@ -147,10 +147,8 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
 
         fireButton.setOnMouseClicked(new EventHandler<Event>() {
 
-
             @Override
             public void handle(Event event) {
-
 
                 Service service = new Service<Void>() {
 

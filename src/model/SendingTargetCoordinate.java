@@ -5,8 +5,6 @@ package model;
  */
 
 
-import javafx.concurrent.Task;
-
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -16,7 +14,7 @@ import java.util.Date;
  * нужен для того, чтобы передовать координаты атаки
  */
 
-public class SendingTargetCoordinate extends Task {
+public class SendingTargetCoordinate  {
 
     private ClientServerConnector connector;
     private Engine engine;
@@ -28,14 +26,12 @@ public class SendingTargetCoordinate extends Task {
 
     private Date currentDate = new Date();
 
-    @Override
-    protected Object call() throws Exception {
+    protected void call()  {
         if (connector.getServer().isClosed()) {
             sendStrikeCoordinateTo("client", connector.getClient().getOutputClientStream());
         } else {
             sendStrikeCoordinateTo("server", connector.getServer().getOutputServerStream());
         }
-        return null;
     }
 
     private void sendStrikeCoordinateTo(String who, OutputStream outputStream) {
@@ -52,9 +48,9 @@ public class SendingTargetCoordinate extends Task {
             int x = engine.getTargetIndex() - y * 10;
             String reportResultOfAttack = String.format("#attack of  %s (I AM) (%s) attacked coordinates: $%d%%%d*;",
                     s, currentDate, x, y);
-            updateMessage(reportResultOfAttack);
+            //updateMessage(reportResultOfAttack);
             out.writeUTF(reportResultOfAttack);
-            updateMessage("");
+            //updateMessage("");
         } catch (IOException e1) {
             e1.printStackTrace();
         }

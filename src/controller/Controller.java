@@ -9,6 +9,8 @@ import model.ClientServerConnector;
 import model.Engine;
 import model.ObserverOfModelIncomingMessage;
 
+import java.util.Date;
+
 
 /**
  * Created by User on 17.06.2015.
@@ -18,6 +20,7 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
     private model.ClientServerConnector clientServerConnector;
     private TaskClientServerConnector taskClientServerConnector;
     private Engine engine;
+    private Date currentDate;
 
     public Controller() {
         this.gui = new view.Gui();
@@ -91,8 +94,9 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
 
     @Override
     public void updateGuiSendingMessage(String sendingMessage) {
+        currentDate=new Date();
 
-        String message = String.format("%s :%s", clientServerConnector.getWhoClientOrServer(), sendingMessage);
+        String message = String.format("%s (%s):%s", clientServerConnector.getWhoClientOrServer(), currentDate, sendingMessage);
         gui.setTextInCommonChat(message);
         Service service = new Service<Void>() {
 

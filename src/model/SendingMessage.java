@@ -6,12 +6,10 @@ package model;
 
 
 import java.io.DataOutputStream;
-import java.util.Date;
 
 public class SendingMessage {
 
 
-    private Date currentDate = new Date();
     private ClientServerConnector connector;
     private String sendingMessage;
 
@@ -39,10 +37,9 @@ public class SendingMessage {
     private void outputAndUpdateMess(DataOutputStream out, String whoClientOrServer) {
         try {
             System.out.println("outputAndUpdateMess " + sendingMessage);
-            //FIXME String message = String.format("%s (%s):%s", whoClientOrServer, sendingMessage);
-            //FIXME updateMessage(message);
-            out.writeUTF(sendingMessage);
-            System.out.println("After outputAndUpdateMess " + sendingMessage);
+            String message = String.format(sendingMessage);
+            out.writeUTF(message);
+            System.out.println("After outputAndUpdateMess " + message);
         } catch (Exception e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

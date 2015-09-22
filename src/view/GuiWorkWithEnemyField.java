@@ -4,8 +4,8 @@ import javafx.scene.paint.Color;
 
 public class GuiWorkWithEnemyField {
 
-    private Rects rects;
     private final int INDEX_END_SHIP = 4400;
+    private Rects rects;
 
     public GuiWorkWithEnemyField(Rects rects) {
         this.rects = rects;

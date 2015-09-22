@@ -6,9 +6,9 @@ package model;
  */
 public class WorkWithIncomingMessage {
 
+    private final int NON_INDEX = 440;
     private ClientServerConnector connector;
     private Engine engine;
-    private final int NON_INDEX = 440;
 
     public WorkWithIncomingMessage(Engine engine, final ClientServerConnector connector) {
         this.connector = connector;

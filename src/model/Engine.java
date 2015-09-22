@@ -36,7 +36,7 @@ public class Engine {
 
     private int targetIndex;
 
-    public Engine()  {
+    public Engine() {
         this.map = new Map(this);
         this.logicMarked = new LogicMarked(map);
         this.status = new Status();
@@ -62,12 +62,24 @@ public class Engine {
         return count2;
     }
 
+    public void setCount2(int count2) {
+        this.count2 = count2;
+    }
+
     public int getCount3() {
         return count3;
     }
 
+    public void setCount3(int count3) {
+        this.count3 = count3;
+    }
+
     public int getCount4() {
         return count4;
+    }
+
+    public void setCount4(int count4) {
+        this.count4 = count4;
     }
 
     public int getOneAmount() {
@@ -90,68 +102,64 @@ public class Engine {
         return saveX;
     }
 
-    public int getSaveY() {
-        return saveY;
-    }
-
-    public int getSaveX1() {
-        return saveX1;
-    }
-
-    public int getSaveY1() {
-        return saveY1;
-    }
-
-    public int getSaveX2() {
-        return saveX2;
-    }
-
-    public int getSaveY2() {
-        return saveY2;
-    }
-
-    public int getTargetX() {
-        return targetX;
-    }
-
-    public int getTargetY() {
-        return targetY;
-    }
-
-    public void setCount2(int count2) {
-        this.count2 = count2;
-    }
-
-    public void setCount3(int count3) {
-        this.count3 = count3;
-    }
-
-    public void setCount4(int count4) {
-        this.count4 = count4;
-    }
-
     public void setSaveX(int saveX) {
         this.saveX = saveX;
+    }
+
+    public int getSaveY() {
+        return saveY;
     }
 
     public void setSaveY(int saveY) {
         this.saveY = saveY;
     }
 
+    public int getSaveX1() {
+        return saveX1;
+    }
+
     public void setSaveX1(int saveX1) {
         this.saveX1 = saveX1;
+    }
+
+    public int getSaveY1() {
+        return saveY1;
     }
 
     public void setSaveY1(int saveY1) {
         this.saveY1 = saveY1;
     }
 
+    public int getSaveX2() {
+        return saveX2;
+    }
+
     public void setSaveX2(int saveX2) {
         this.saveX2 = saveX2;
     }
 
+    public int getSaveY2() {
+        return saveY2;
+    }
+
     public void setSaveY2(int saveY2) {
         this.saveY2 = saveY2;
+    }
+
+    public int getTargetX() {
+        return targetX;
+    }
+
+    public void setTargetX(int x) {
+        this.targetX = x;
+    }
+
+    public int getTargetY() {
+        return targetY;
+    }
+
+    public void setTargetY(int y) {
+        this.targetY = y;
     }
 
     public void increaseAmountByOne(String type) {
@@ -186,14 +194,6 @@ public class Engine {
                 fourAmount--;
                 break;
         }
-    }
-
-    public void setTargetX(int x) {
-        this.targetX = x;
-    }
-
-    public void setTargetY(int y) {
-        this.targetY = y;
     }
 
     public boolean isAllShipInstall() {

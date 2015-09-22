@@ -5,9 +5,9 @@ package model;
  * Created by User on 29.04.2015.
  */
 public class ShipSingle implements InterfaceShip {
+    private final int NONEXISTENT_COORDINATE = 400;
     private Engine engine;
     private int countOfAliveRect = 1;
-    private final int NONEXISTENT_COORDINATE = 400;
     private int xNO1;
     private int yNO1;
 

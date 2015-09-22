@@ -7,15 +7,14 @@ import java.io.InputStream;
 public class SystemOfIncomingMessage {
 
     private ClientServerConnector connector;
-
-    public InputMessage getInputMessage() {
-        return inputMessage;
-    }
-
     private InputMessage inputMessage;
 
     SystemOfIncomingMessage(ClientServerConnector connector) {
         this.connector = connector;
+    }
+
+    public InputMessage getInputMessage() {
+        return inputMessage;
     }
 
     public void mainFunctionOfIncomingMessage() throws IOException {

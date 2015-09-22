@@ -8,6 +8,7 @@ public class Cell {
     private int cellY;
     private int veto = 0;
     private InterfaceShip ship;
+    private String fettle;
 
     public Cell(int cellX, int cellY, String fettle) {
         this.cellX = cellX;
@@ -22,8 +23,6 @@ public class Cell {
     public void setFettle(String fettle) {
         this.fettle = fettle;
     }
-
-    private String fettle;
 
     public int getVeto() {
         return veto;

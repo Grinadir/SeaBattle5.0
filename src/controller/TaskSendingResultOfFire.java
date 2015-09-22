@@ -8,7 +8,6 @@ import javafx.concurrent.Task;
 public class TaskSendingResultOfFire extends Task {
 
 
-
     @Override
     protected Object call() throws Exception {
         return null;

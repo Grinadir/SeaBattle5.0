@@ -3,10 +3,9 @@ package model;
 
 public class ShipDouble implements InterfaceShip {
 
+    private final int NONEXISTENT_COORDINATE = 400;
     private Engine engine;
     private int countOfAliveRect = 2;
-    private final int NONEXISTENT_COORDINATE = 400;
-
     private int xNO1;
     private int yNO1;
     private int xNO2;

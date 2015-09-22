@@ -40,21 +40,20 @@ public class EngineTest {
         map.makeSingleShipInMap(3, 3);
 
         // then
-        assertEquals(
+        assertEquals("----------\n" +
+                "-S--------\n" +
                 "----------\n" +
-                        "-S--------\n" +
-                        "----------\n" +
-                        "---S------\n" +
-                        "----------\n" +
-                        "----------\n" +
-                        "----------\n" +
-                        "----------\n" +
-                        "----------\n" +
-                        "----------\n", mapToString(map));
+                "---S------\n" +
+                "----------\n" +
+                "----------\n" +
+                "----------\n" +
+                "----------\n" +
+                "----------\n" +
+                "----------\n", mapToString(map));
     }
 
     private String mapToString(Map map) {
-        StringBuffer butter = new StringBuffer();
+        StringBuffer buffer = new StringBuffer();
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
                 Cell cell = map.getCellMY(x, y);
@@ -62,14 +61,14 @@ public class EngineTest {
                 if (ship != null) {
                     String shipType = ship.getClass().getSimpleName();
                     char type = shipType.charAt(4);
-                    butter.append(type);
+                    buffer.append(type);
                 } else {
-                    butter.append('-');
+                    buffer.append('-');
                 }
             }
-            butter.append("\n");
+            buffer.append("\n");
         }
-        return butter.toString();
+        return buffer.toString();
     }
 }
 

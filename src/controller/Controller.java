@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import model.ClientServerConnector;
 import model.Engine;
 import model.ObserverOfModelIncomingMessage;
+import view.Gui;
 
 import java.util.Date;
 
@@ -21,6 +22,7 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
     private TaskClientServerConnector taskClientServerConnector;
     private Engine engine;
     private Date currentDate;
+
 
     public Controller() {
         this.gui = new view.Gui();
@@ -42,21 +44,20 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
         }
     }
 
+    public static void main(String[] args) {
+        launch(args);
+
+    }
+
     private void makeOneEnemyRegister(int i) {
         gui.getRects().
                 getRectENEMY(i).
                 registerObserver(this);
     }
 
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         gui.start(primaryStage);
-
-    }
-
-    public static void main(String[] args) {
-        launch(args);
 
     }
 
@@ -75,13 +76,13 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
         if (fettle.equals("ship")) {
             gui.getRects().getMyRect(x, y).setFill(Color.BLUE);
         }
-        if (fettle.equals("undoAttack")){
+        if (fettle.equals("undoAttack")) {
             System.out.println("undoAttack");
-            gui.getRects().getRectENEMY(y*10+x).setFill(Color.GREEN);
+            gui.getRects().getRectENEMY(y * 10 + x).setFill(Color.GREEN);
         }
-        if(fettle.equals("Attack")){
+        if (fettle.equals("Attack")) {
             System.out.println("Attack");
-            gui.getRects().getRectENEMY(y*10+x).setFill(Color.RED);
+            gui.getRects().getRectENEMY(y * 10 + x).setFill(Color.RED);
         }
 
     }
@@ -94,7 +95,7 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
 
     @Override
     public void updateGuiSendingMessage(String sendingMessage) {
-        currentDate=new Date();
+        currentDate = new Date();
 
         String message = String.format("%s (%s):%s", clientServerConnector.getWhoClientOrServer(), currentDate, sendingMessage);
         gui.setTextInCommonChat(message);
@@ -127,7 +128,7 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
 
     private void makeOneMyRegister(int i) {
         int y = (int) (10 - (10 - i * 0.1));
-        int x= i - y * 10;
+        int x = i - y * 10;
         gui.getRects().
                 getMyRect(x, y).
                 registerObserver(this);

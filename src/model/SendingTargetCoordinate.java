@@ -14,19 +14,18 @@ import java.util.Date;
  * нужен для того, чтобы передовать координаты атаки
  */
 
-public class SendingTargetCoordinate  {
+public class SendingTargetCoordinate {
 
     private ClientServerConnector connector;
     private Engine engine;
+    private Date currentDate = new Date();
 
     public SendingTargetCoordinate(Engine engine, ClientServerConnector connector) {
         this.engine = engine;
         this.connector = connector;
     }
 
-    private Date currentDate = new Date();
-
-    protected void call()  {
+    protected void call() {
         if (connector.getServer().isClosed()) {
             sendStrikeCoordinateTo("client", connector.getClient().getOutputClientStream());
         } else {

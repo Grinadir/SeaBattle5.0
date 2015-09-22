@@ -40,7 +40,7 @@ public class MyRectangle extends Rectangle implements ObservableGuiMyRectangle {
                     notifyCoordinate(x, y, "two");
                 } else if (gui.getSettings().isThree()) {
                     notifyCoordinate(x, y, "three");
-                } else if (gui.getSettings().isFour()){
+                } else if (gui.getSettings().isFour()) {
                     notifyCoordinate(x, y, "four");
                 }
             }

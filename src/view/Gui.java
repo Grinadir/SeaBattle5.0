@@ -47,6 +47,7 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
     private GridPane enemySeaField = new GridPane();
     private GridPane shipType = new GridPane();
     private Rects rects = new Rects(this);
+
     public static void main(String[] args) throws Exception {
         launch(args);
     }
@@ -240,7 +241,6 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
     public void addEnemySeaField(EnemyRectangle rectangle, int i, int numLine) {
         enemySeaField.add(rectangle, i, numLine);
     }
-
 
     public void setTextInCommonChat(String message) {
 

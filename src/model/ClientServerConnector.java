@@ -14,15 +14,14 @@ public class ClientServerConnector implements ObservableModelIncomingMessage {
     private Client client;
     private SystemOfIncomingMessage systemOfIncomingMessage;
     private ArrayList observers;
-
-    public String getWhoClientOrServer() {
-        return WhoClientOrServer;
-    }
-
     private String WhoClientOrServer;
 
     public ClientServerConnector() {
         observers = new ArrayList();
+    }
+
+    public String getWhoClientOrServer() {
+        return WhoClientOrServer;
     }
 
     public void call() throws Exception {
@@ -31,9 +30,9 @@ public class ClientServerConnector implements ObservableModelIncomingMessage {
         systemOfIncomingMessage = new SystemOfIncomingMessage(ClientServerConnector.this);
         tryFunctionToConnection();
         if (this.getServer().isClosed()) {
-            WhoClientOrServer="Client";
+            WhoClientOrServer = "Client";
         } else {
-            WhoClientOrServer="Server";
+            WhoClientOrServer = "Server";
         }
         systemOfIncomingMessage.mainFunctionOfIncomingMessage();
     }

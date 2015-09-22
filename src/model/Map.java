@@ -9,26 +9,24 @@ import java.util.ArrayList;
 public class Map implements ObservableMap {
 
 
+    private final int INDEX_END_SHIP = 4400;
+    private final Engine engine;
+    private final int OUT_OF_FIELD = 18;
     private Cell[] cellMY = new Cell[100];
     private Cell[] cellENEMY = new Cell[100];
-    private final int INDEX_END_SHIP = 4400;
     private ArrayList observers;
-    private final Engine engine;
     private int coordOfAttackX;
     private int coordOfAttackY;
-
-    public Choose getChoose() {
-        return choose;
-    }
-
     private Choose choose;
-    private final int OUT_OF_FIELD = 18;
-
     public Map(Engine engine) {
         this.engine = engine;
         makeEnemyAndMyCells();
         observers = new ArrayList();
         this.choose = new Choose();
+    }
+
+    public Choose getChoose() {
+        return choose;
     }
 
     @Override
@@ -48,14 +46,12 @@ public class Map implements ObservableMap {
             ObserverOfMap observer = (ObserverOfMap) observers.get(i);
             observer.updateModelMap(x, y, fettle);
         }
-
     }
 
 
     private void makeOneIterationCellMY(int i) {
         int numLine = (int) (10 - (10 - i * 0.1));
         cellMY[i] = new Cell(i - numLine * 10, numLine, "non");
-
     }
 
     private void makeOneIterationCellENEMY(int i) {
@@ -259,18 +255,18 @@ public class Map implements ObservableMap {
         }
     }
 
-    public void selectTargetOfAttack(int x, int y){
-        if((coordOfAttackX!=x)||(coordOfAttackY!=y)){
+    public void selectTargetOfAttack(int x, int y) {
+        if ((coordOfAttackX != x) || (coordOfAttackY != y)) {
             notify(coordOfAttackX, coordOfAttackY, "undoAttack");
-            coordOfAttackX=x;
-            coordOfAttackY=y;
+            coordOfAttackX = x;
+            coordOfAttackY = y;
             notify(coordOfAttackX, coordOfAttackY, "Attack");
-        }else if((coordOfAttackX==x)&&(coordOfAttackY==y)){
-            if(coordOfAttackY==440&&coordOfAttackY==440){
-                coordOfAttackX=x;
-                coordOfAttackY=y;
+        } else if ((coordOfAttackX == x) && (coordOfAttackY == y)) {
+            if (coordOfAttackY == 440 && coordOfAttackY == 440) {
+                coordOfAttackX = x;
+                coordOfAttackY = y;
                 notify(coordOfAttackX, coordOfAttackY, "Attack");
-            }else {
+            } else {
                 notify(coordOfAttackX, coordOfAttackY, "undoAttack");
                 coordOfAttackX = 440;
                 coordOfAttackY = 440;

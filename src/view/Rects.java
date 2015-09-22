@@ -10,7 +10,6 @@ public class Rects {
     private Gui gui;
 
 
-
     public Rects(Gui gui) {
         this.gui = gui;
         makeEnemyAndMyField();

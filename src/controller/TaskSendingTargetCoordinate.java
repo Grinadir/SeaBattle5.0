@@ -10,8 +10,8 @@ public class TaskSendingTargetCoordinate extends Task {
 
     private model.SendingTargetCoordinate sendingTargetCoordinate;
 
-    public TaskSendingTargetCoordinate(model.Engine engine, model.ClientServerConnector clientServerConnector){
-        this.sendingTargetCoordinate=new SendingTargetCoordinate(engine, clientServerConnector);
+    public TaskSendingTargetCoordinate(model.Engine engine, model.ClientServerConnector clientServerConnector) {
+        this.sendingTargetCoordinate = new SendingTargetCoordinate(engine, clientServerConnector);
 
 
     }

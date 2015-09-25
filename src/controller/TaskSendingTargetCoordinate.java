@@ -18,7 +18,7 @@ public class TaskSendingTargetCoordinate extends Task {
 
     @Override
     protected Object call() throws Exception {
-        this.call();
+        sendingTargetCoordinate.call();
 
         return null;
     }

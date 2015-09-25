@@ -28,14 +28,16 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
         this.gui = new view.Gui();
         clientServerConnector = new ClientServerConnector();
         taskClientServerConnector = new TaskClientServerConnector(clientServerConnector);
+        
         gui.setTaskConnection(taskClientServerConnector);
+
         System.out.println(taskClientServerConnector.getValue());
         clientServerConnector.registerObserver(this);
         gui.registerObserver(this);
         engine = new Engine();
         engine.getMap().registerObserver(this);
         engine.getLogicMarked().registerObserver(this);
-
+        gui.setTaskSendCoordinateOfAttack(new TaskSendingTargetCoordinate(engine,clientServerConnector));
         for (int i = 0; i <= 99; ++i) {
             makeOneMyRegister(i);
         }

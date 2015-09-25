@@ -25,7 +25,7 @@ public class SendingTargetCoordinate {
         this.connector = connector;
     }
 
-    protected void call() {
+    public void call() {
         if (connector.getServer().isClosed()) {
             sendStrikeCoordinateTo("client", connector.getClient().getOutputClientStream());
         } else {

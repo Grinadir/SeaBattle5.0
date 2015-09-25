@@ -60,6 +60,8 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
         this.taskConnection = taskConnection;
     }
 
+
+
     @Override
     public void start(Stage primaryStage) throws IOException, InterruptedException {
         commonChat.setEditable(false);

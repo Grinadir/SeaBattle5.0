@@ -14,7 +14,7 @@ public class SystemOfIncomingMessage {
     }
 
     public InputMessage getInputMessage() {
-        return inputMessage;
+       return inputMessage;
     }
 
     public void mainFunctionOfIncomingMessage() throws IOException {

@@ -15,6 +15,15 @@ public class Map implements ObservableMap {
     private Cell[] cellMY = new Cell[100];
     private Cell[] cellENEMY = new Cell[100];
     private ArrayList observers;
+
+    public int getCoordOfAttackX() {
+        return coordOfAttackX;
+    }
+
+    public int getCoordOfAttackY() {
+        return coordOfAttackY;
+    }
+
     private int coordOfAttackX;
     private int coordOfAttackY;
     private Choose choose;
@@ -275,6 +284,10 @@ public class Map implements ObservableMap {
 
 
     }
+
+    public int getTargetIndexOfAttack(){
+        return coordOfAttackX+10*coordOfAttackY;
+}
 
     public Cell getCellMY(int x, int y) {
         return cellMY[y * 10 + x];

@@ -9,6 +9,8 @@ import model.ClientServerConnector;
 import model.Engine;
 import model.ObserverOfModelIncomingMessage;
 import view.Gui;
+import view.ObserverOfGuiSendingMessage;
+import view.ObserverOfGuiSendingTargetCoord;
 
 import java.util.Date;
 
@@ -16,7 +18,7 @@ import java.util.Date;
 /**
  * Created by User on 17.06.2015.
  */
-public class Controller extends Application implements model.ObserverOfMap, ObserverOfModelIncomingMessage, view.ObserverOfGuiSendingMessage, view.ObserverOfGuiMyRectangle, view.ObserverOfGuiEnemyRectangle {
+public class Controller extends Application implements model.ObserverOfMap, ObserverOfModelIncomingMessage, view.ObserverOfGuiSendingMessage, view.ObserverOfGuiMyRectangle, view.ObserverOfGuiEnemyRectangle, ObserverOfGuiSendingTargetCoord {
     private view.Gui gui;
     private model.ClientServerConnector clientServerConnector;
     private TaskClientServerConnector taskClientServerConnector;
@@ -33,7 +35,8 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
 
         System.out.println(taskClientServerConnector.getValue());
         clientServerConnector.registerObserver(this);
-        gui.registerObserver(this);
+        gui.registerObserver((ObserverOfGuiSendingMessage) this);
+        gui.registerObserver((ObserverOfGuiSendingTargetCoord) this);
         engine = new Engine();
         engine.getMap().registerObserver(this);
         engine.getLogicMarked().registerObserver(this);
@@ -140,5 +143,21 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
     public void updateGuiAttackCoordinate(int x, int y) {
         System.out.println("updateGuiAttackCoordinate");
         engine.getMap().selectTargetOfAttack(x, y);
+    }
+
+    @Override
+    public void updateGuiSendingTargetCoord() {
+
+        Service service = new Service<Void>() {
+
+            @Override
+            protected Task<Void> createTask() {
+                // TODO Auto-generated method stub
+                return new TaskSendingTargetCoordinate(engine, clientServerConnector);
+            }
+
+        };
+        service.start();
+
     }
 }

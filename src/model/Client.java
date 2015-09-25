@@ -15,7 +15,7 @@ public class Client {
     private int port = 8080;
 
     public Client() throws IOException {
-        ip = InetAddress.getByName("192.168.100.9");
+        ip = InetAddress.getByName("192.168.100.4");
     }
 
     public void clientWorking() throws IOException, InterruptedException {

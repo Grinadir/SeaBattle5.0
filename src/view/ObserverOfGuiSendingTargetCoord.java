@@ -5,5 +5,5 @@ package view;
  */
 public interface ObserverOfGuiSendingTargetCoord {
 
-    void updateGuiSendingTargetCoord(String string);
+    void updateGuiSendingTargetCoord();
 }

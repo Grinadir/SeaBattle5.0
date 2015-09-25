@@ -9,6 +9,6 @@ public interface ObservableGuiSendingTargetCoord {
 
     void removeObserver(ObserverOfGuiSendingTargetCoord o);
 
-    void notifySendingTarget(String message);
+    void notifySendingTarget();
 
 }

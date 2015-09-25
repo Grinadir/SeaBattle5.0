@@ -1,10 +1,13 @@
 package model;
 
 
+import view.ObservableGuiEnemyRectangle;
+import view.ObserverOfGuiEnemyRectangle;
+
 /**
  * Created by User on 23.04.2015.
  */
-public class Engine {
+public class Engine{
 
     private Status status;
     private Map map;
@@ -231,4 +234,6 @@ public class Engine {
     public LogicMarked getLogicMarked() {
         return logicMarked;
     }
+
+
 }

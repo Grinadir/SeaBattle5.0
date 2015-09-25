@@ -39,16 +39,19 @@ public class SendingTargetCoordinate {
         if (engine.getStatus().isFollowStep() && engine.getStatus().isReady()) {
             sendStrikeCoordinate(outClient, who);
         }
+        sendStrikeCoordinate(outClient, who);
     }
 
     private void sendStrikeCoordinate(DataOutputStream out, String s) {
         try {
-            int y = (int) (10 - (10 - engine.getTargetIndex() * 0.1));
-            int x = engine.getTargetIndex() - y * 10;
+            int x = engine.getMap().getCoordOfAttackX();
+            int y = engine.getMap().getCoordOfAttackY();
             String reportResultOfAttack = String.format("#attack of  %s (I AM) (%s) attacked coordinates: $%d%%%d*;",
                     s, currentDate, x, y);
             //updateMessage(reportResultOfAttack);
+
             out.writeUTF(reportResultOfAttack);
+            System.out.println("ОГОНЬ!");
             //updateMessage("");
         } catch (IOException e1) {
             e1.printStackTrace();

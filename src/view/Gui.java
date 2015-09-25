@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Gui extends Application implements ObservableGuiSendingMessage {
+public class Gui extends Application implements ObservableGuiSendingMessage, ObservableGuiSendingTargetCoord {
 
 
     private TextArea commonChat = new TextArea();
@@ -152,17 +152,7 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
 
             @Override
             public void handle(Event event) {
-
-                Service service = new Service<Void>() {
-
-                    @Override
-                    protected Task<Void> createTask() {
-                        // TODO Auto-generated method stub
-                        return taskSendCoordinateOfAttack;
-                    }
-
-                };
-                service.start();
+                notifySendingTarget();
             }
         });
 
@@ -313,6 +303,27 @@ public class Gui extends Application implements ObservableGuiSendingMessage {
         for (int i = 0; i < observers.size(); i++) {
             ObserverOfGuiSendingMessage observer = (ObserverOfGuiSendingMessage) observers.get(i);
             observer.updateGuiSendingMessage(message);
+        }
+
+    }
+
+
+    @Override
+    public void registerObserver(ObserverOfGuiSendingTargetCoord o) {
+        observers.add(o);
+
+    }
+
+    @Override
+    public void removeObserver(ObserverOfGuiSendingTargetCoord o) {
+
+    }
+
+    @Override
+    public void notifySendingTarget() {
+        for (int i = 0; i < observers.size(); i++) {
+            ObserverOfGuiSendingTargetCoord observer = (ObserverOfGuiSendingTargetCoord) observers.get(i);
+            observer.updateGuiSendingTargetCoord();
         }
 
     }

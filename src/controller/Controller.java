@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import model.ClientServerConnector;
 import model.Engine;
 import model.ObserverOfModelIncomingMessage;
-import view.Gui;
+
 import view.ObserverOfGuiSendingMessage;
 import view.ObserverOfGuiSendingTargetCoord;
 
@@ -36,7 +36,7 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
         System.out.println(taskClientServerConnector.getValue());
         clientServerConnector.registerObserver(this);
         gui.registerObserver((ObserverOfGuiSendingMessage) this);
-        gui.registerObserver((ObserverOfGuiSendingTargetCoord) this);
+        //gui.registerObserver((ObserverOfGuiSendingTargetCoord) this);
         engine = new Engine();
         engine.getMap().registerObserver(this);
         engine.getLogicMarked().registerObserver(this);

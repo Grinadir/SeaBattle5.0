@@ -41,7 +41,8 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
     private Task taskConnection;
     private Task taskSendMessage;
     private Task taskSendCoordinateOfAttack;
-    private ArrayList observers = new ArrayList();
+    private ArrayList observersOfSendingMessage = new ArrayList();
+    private ArrayList observersOfSendingTarget = new ArrayList();
     private GridPane mySeaField = new GridPane();
     private GridPane myPane = new GridPane();
     private GridPane enemySeaField = new GridPane();
@@ -289,7 +290,7 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
 
     @Override
     public void registerObserver(ObserverOfGuiSendingMessage o) {
-        observers.add(o);
+        observersOfSendingMessage.add(o);
 
     }
 
@@ -300,8 +301,8 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
 
     @Override
     public void notifySendingMessage(String message) {
-        for (int i = 0; i < observers.size(); i++) {
-            ObserverOfGuiSendingMessage observer = (ObserverOfGuiSendingMessage) observers.get(i);
+        for (int i = 0; i < observersOfSendingMessage.size(); i++) {
+            ObserverOfGuiSendingMessage observer = (ObserverOfGuiSendingMessage) observersOfSendingMessage.get(i);
             observer.updateGuiSendingMessage(message);
         }
 
@@ -310,7 +311,7 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
 
     @Override
     public void registerObserver(ObserverOfGuiSendingTargetCoord o) {
-        observers.add(o);
+        observersOfSendingTarget.add(o);
 
     }
 
@@ -321,8 +322,8 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
 
     @Override
     public void notifySendingTarget() {
-        for (int i = 0; i < observers.size(); i++) {
-            ObserverOfGuiSendingTargetCoord observer = (ObserverOfGuiSendingTargetCoord) observers.get(i);
+        for (int i = 0; i < observersOfSendingTarget.size(); i++) {
+            ObserverOfGuiSendingTargetCoord observer = (ObserverOfGuiSendingTargetCoord) observersOfSendingTarget.get(i);
             observer.updateGuiSendingTargetCoord();
         }
 

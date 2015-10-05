@@ -80,7 +80,7 @@ public class MyRectangle extends Rectangle implements ObservableGuiMyRectangle {
         for (int i = 0; i < observers.size(); i++) {
             System.out.println("notifyCoordinate");
             ObserverOfGuiMyRectangle observer = (ObserverOfGuiMyRectangle) observers.get(i);
-            observer.updateGuiCoordinate(x, y, type);
+            observer.updateFromGuiCoordinate(x, y, type);
         }
 
     }

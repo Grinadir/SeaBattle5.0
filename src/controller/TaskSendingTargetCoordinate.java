@@ -1,16 +1,17 @@
 package controller;
 
 import javafx.concurrent.Task;
-import model.SendingTargetCoordinate;
+import net.ClientServerConnector;
+import net.SendingTargetCoordinate;
 
 /**
  * Created by User on 01.07.2015.
  */
 public class TaskSendingTargetCoordinate extends Task {
 
-    private model.SendingTargetCoordinate sendingTargetCoordinate;
+    private SendingTargetCoordinate sendingTargetCoordinate;
 
-    public TaskSendingTargetCoordinate(model.Engine engine, model.ClientServerConnector clientServerConnector) {
+    public TaskSendingTargetCoordinate(model.Engine engine, ClientServerConnector clientServerConnector) {
         this.sendingTargetCoordinate = new SendingTargetCoordinate(engine, clientServerConnector);
 
 
@@ -22,4 +23,6 @@ public class TaskSendingTargetCoordinate extends Task {
 
         return null;
     }
+
+
 }

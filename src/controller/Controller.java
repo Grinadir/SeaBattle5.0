@@ -5,10 +5,10 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import model.ClientServerConnector;
 import model.Engine;
 import model.ObserverOfModelIncomingMessage;
-
+import net.ClientServerConnector;
+import net.WorkWithIncomingMessage;
 import view.ObserverOfGuiSendingMessage;
 import view.ObserverOfGuiSendingTargetCoord;
 
@@ -20,39 +20,52 @@ import java.util.Date;
  */
 public class Controller extends Application implements model.ObserverOfMap, ObserverOfModelIncomingMessage, view.ObserverOfGuiSendingMessage, view.ObserverOfGuiMyRectangle, view.ObserverOfGuiEnemyRectangle, ObserverOfGuiSendingTargetCoord {
     private view.Gui gui;
-    private model.ClientServerConnector clientServerConnector;
+    private ClientServerConnector clientServerConnector;
     private TaskClientServerConnector taskClientServerConnector;
     private Engine engine;
     private Date currentDate;
 
 
     public Controller() {
-        this.gui = new view.Gui();
         clientServerConnector = new ClientServerConnector();
+        engine = new Engine();
+        this.gui = new view.Gui() {
+            @Override
+            public void workWithIncommingMessage(String message) {
+                new WorkWithIncomingMessage(engine, clientServerConnector).main(message);
+            }
+        }
+        ;
+
+
         taskClientServerConnector = new TaskClientServerConnector(clientServerConnector);
-        
+
         gui.setTaskConnection(taskClientServerConnector);
 
         System.out.println(taskClientServerConnector.getValue());
         clientServerConnector.registerObserver(this);
         gui.registerObserver((ObserverOfGuiSendingMessage) this);
-        //gui.registerObserver((ObserverOfGuiSendingTargetCoord) this);
-        engine = new Engine();
+        gui.registerObserver((ObserverOfGuiSendingTargetCoord) this);
+
+
         engine.getMap().registerObserver(this);
         engine.getLogicMarked().registerObserver(this);
-        gui.setTaskSendCoordinateOfAttack(new TaskSendingTargetCoordinate(engine,clientServerConnector));
+        gui.setTaskSendCoordinateOfAttack(new TaskSendingTargetCoordinate(engine, clientServerConnector));
         for (int i = 0; i <= 99; ++i) {
             makeOneMyRegister(i);
         }
         for (int i = 0; i <= 99; ++i) {
             makeOneEnemyRegister(i);
         }
+
+
     }
 
     public static void main(String[] args) {
         launch(args);
 
     }
+
 
     private void makeOneEnemyRegister(int i) {
         gui.getRects().
@@ -90,6 +103,15 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
             gui.getRects().getRectENEMY(y * 10 + x).setFill(Color.RED);
         }
 
+
+        if (fettle.equals("damMyField")) {
+            gui.getRects().getMyRect(x, y).setFill(Color.ORANGE);
+        }
+
+        if (fettle.equals("killMyField")) {
+            gui.getRects().getMyRect(x, y).setFill(Color.BLACK);
+        }
+
     }
 
 
@@ -117,7 +139,7 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
     }
 
     @Override
-    public void updateGuiCoordinate(int x, int y, String type) {
+    public void updateFromGuiCoordinate(int x, int y, String type) {
         System.out.println("updateGuiCoordinate");
         if (type.equals("one")) {
             engine.getMap().getChoose().chooseOne();
@@ -152,7 +174,6 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
 
             @Override
             protected Task<Void> createTask() {
-                // TODO Auto-generated method stub
                 return new TaskSendingTargetCoordinate(engine, clientServerConnector);
             }
 
@@ -160,4 +181,6 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
         service.start();
 
     }
+
+
 }

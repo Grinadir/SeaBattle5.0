@@ -1,5 +1,8 @@
-package model;
+package net;
 
+
+import model.Cell;
+import model.Engine;
 
 import java.io.DataOutputStream;
 import java.util.Date;

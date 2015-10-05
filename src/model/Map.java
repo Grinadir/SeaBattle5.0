@@ -15,6 +15,16 @@ public class Map implements ObservableMap {
     private Cell[] cellMY = new Cell[100];
     private Cell[] cellENEMY = new Cell[100];
     private ArrayList observers;
+    private int coordOfAttackX;
+    private int coordOfAttackY;
+    private Choose choose;
+
+    public Map(Engine engine) {
+        this.engine = engine;
+        makeEnemyAndMyCells();
+        observers = new ArrayList();
+        this.choose = new Choose();
+    }
 
     public int getCoordOfAttackX() {
         return coordOfAttackX;
@@ -22,16 +32,6 @@ public class Map implements ObservableMap {
 
     public int getCoordOfAttackY() {
         return coordOfAttackY;
-    }
-
-    private int coordOfAttackX;
-    private int coordOfAttackY;
-    private Choose choose;
-    public Map(Engine engine) {
-        this.engine = engine;
-        makeEnemyAndMyCells();
-        observers = new ArrayList();
-        this.choose = new Choose();
     }
 
     public Choose getChoose() {
@@ -216,27 +216,33 @@ public class Map implements ObservableMap {
             cellMY[y * 10 + x].getShip().impairment();
             if (cellMY[x + 10 * y].getShip().isValidShip()) {
                 cellMY[y * 10 + x].setFettle("dam");
+                notify(x, y, "damMyField");
             } else if (!(cellMY[x + 10 * y].getShip().isValidShip())) {
                 cellMY[y * 10 + x].setFettle("kill");
+                notify(x, y, "killMyField");
                 int lX = cellMY[x + 10 * y].getShip().getX1();
                 int lY = cellMY[x + 10 * y].getShip().getY1();
                 if (lX + lY <= OUT_OF_FIELD) {
                     cellMY[y * 10 + x].setFettle("kill");
+                    notify(x, y, "killMyField");
                 }
                 lX = cellMY[x + 10 * y].getShip().getX2();
                 lY = cellMY[x + 10 * y].getShip().getY2();
                 if (lX + lY <= OUT_OF_FIELD) {
                     cellMY[y * 10 + x].setFettle("kill");
+                    notify(x, y, "killMyField");
                 }
                 lX = cellMY[x + 10 * y].getShip().getX3();
                 lY = cellMY[x + 10 * y].getShip().getY3();
                 if (lX + lY <= OUT_OF_FIELD) {
                     cellMY[y * 10 + x].setFettle("kill");
+                    notify(x, y, "killMyField");
                 }
                 lX = cellMY[x + 10 * y].getShip().getX4();
                 lY = cellMY[x + 10 * y].getShip().getY4();
                 if (lX + lY <= OUT_OF_FIELD) {
                     cellMY[y * 10 + x].setFettle("kill");
+                    notify(x, y, "killMyField");
                 }
             }
         }
@@ -285,9 +291,9 @@ public class Map implements ObservableMap {
 
     }
 
-    public int getTargetIndexOfAttack(){
-        return coordOfAttackX+10*coordOfAttackY;
-}
+    public int getTargetIndexOfAttack() {
+        return coordOfAttackX + 10 * coordOfAttackY;
+    }
 
     public Cell getCellMY(int x, int y) {
         return cellMY[y * 10 + x];

@@ -1,4 +1,4 @@
-package model;
+package net;
 
 /**
  * Created by Selkov Alexsandr on 22.02.2015.

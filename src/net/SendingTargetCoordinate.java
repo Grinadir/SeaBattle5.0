@@ -1,9 +1,11 @@
-package model;
+package net;
 
 /**
  * Created by Selkov Alexsandr on 22.02.2015.
  */
 
+
+import model.Engine;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

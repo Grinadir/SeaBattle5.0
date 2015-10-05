@@ -1,14 +1,15 @@
 package controller;
 
 import javafx.concurrent.Task;
+import net.ClientServerConnector;
 
 /**
  * Created by User on 20.06.2015.
  */
 public class TaskClientServerConnector extends Task {
-    private model.ClientServerConnector clientServerConnector;
+    private ClientServerConnector clientServerConnector;
 
-    public TaskClientServerConnector(model.ClientServerConnector clientServerConnector) {
+    public TaskClientServerConnector(ClientServerConnector clientServerConnector) {
         this.clientServerConnector = clientServerConnector;
     }
 

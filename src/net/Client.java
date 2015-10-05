@@ -1,4 +1,4 @@
-package model;
+package net;
 
 import java.io.IOException;
 import java.io.InputStream;

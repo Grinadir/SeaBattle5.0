@@ -1,6 +1,8 @@
 package controller;
 
 import javafx.concurrent.Task;
+import net.ClientServerConnector;
+import net.SendingMessage;
 
 
 /**
@@ -8,10 +10,10 @@ import javafx.concurrent.Task;
  */
 public class TaskSendingMessage extends Task {
 
-    private model.SendingMessage sendingMessage;
+    private SendingMessage sendingMessage;
 
-    public TaskSendingMessage(model.ClientServerConnector clientServerConnector, String strSendMess) {
-        this.sendingMessage = new model.SendingMessage(clientServerConnector, strSendMess);
+    public TaskSendingMessage(ClientServerConnector clientServerConnector, String strSendMess) {
+        this.sendingMessage = new SendingMessage(clientServerConnector, strSendMess);
     }
 
     @Override

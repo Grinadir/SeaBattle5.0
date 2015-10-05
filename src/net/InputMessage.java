@@ -1,5 +1,8 @@
-package model;
+package net;
 
+
+import model.ObservableModelIncomingMessage;
+import model.ObserverOfModelIncomingMessage;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -11,7 +14,7 @@ public class InputMessage implements ObservableModelIncomingMessage {
     private ClientServerConnector connector;
     private DataInputStream dataInputStreamFromInputMessage;
     private ArrayList observers;
-
+    private String strForTest;
 
     public InputMessage(ClientServerConnector connector, DataInputStream in) {
         this.connector = connector;
@@ -19,11 +22,18 @@ public class InputMessage implements ObservableModelIncomingMessage {
         observers = new ArrayList();
     }
 
+    public String getStrForTest() {
+        return strForTest;
+    }
+
     public void inputMessageHandler() throws IOException {
         String line;
         line = dataInputStreamFromInputMessage.readUTF();
         System.out.println(line);
+        //notify(line);
         connector.updateMessage(line);
+
+        strForTest = line;
 
     }
 

@@ -53,6 +53,10 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
         launch(args);
     }
 
+
+    public void workWithIncommingMessage(String message) {
+    }
+
     public Rects getRects() {
         return rects;
     }
@@ -60,7 +64,6 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
     public void setTaskConnection(Task taskConnection) {
         this.taskConnection = taskConnection;
     }
-
 
 
     @Override
@@ -126,15 +129,11 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
                                     ObservableValue<? extends String> observable,
                                     String oldValue, String newValue) {
 
-                                //String tempString = taskConnection.getMessage();
                                 Gui.this.setTextInCommonChat(taskConnection.getMessage());
-                                //new GuiWorkWithIncomingMessage(engine, connector).main(tempString);
-                                //statusLabelOfStep();
+                                workWithIncommingMessage(taskConnection.getMessage());
 
                             }
                         });
-                // Создание класса Task, существующий для работы с JavaFX
-                //commonChat.setText("Begin connection");
                 Service service = new Service<Void>() {
 
 
@@ -216,8 +215,6 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
 
         Scene scene = new Scene(myPane, 500, 600);
 
-        scene.getStylesheets().add(
-                getClass().getResource("application.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();

@@ -1,9 +1,12 @@
-package model;
+package net;
 
 /**
  * Created by Selkov Alexsandr on 22.02.2015.
  */
 
+
+import model.ObservableModelIncomingMessage;
+import model.ObserverOfModelIncomingMessage;
 
 import java.io.IOException;
 import java.net.SocketException;

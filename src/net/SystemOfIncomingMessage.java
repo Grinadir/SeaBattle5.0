@@ -1,4 +1,4 @@
-package model;
+package net;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class SystemOfIncomingMessage {
     }
 
     public InputMessage getInputMessage() {
-       return inputMessage;
+        return inputMessage;
     }
 
     public void mainFunctionOfIncomingMessage() throws IOException {

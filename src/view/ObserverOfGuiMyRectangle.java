@@ -5,5 +5,5 @@ package view;
  */
 public interface ObserverOfGuiMyRectangle {
 
-    void updateGuiCoordinate(int x, int y, String type);
+    void updateFromGuiCoordinate(int x, int y, String type);
 }

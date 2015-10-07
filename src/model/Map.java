@@ -121,7 +121,7 @@ public class Map implements ObservableMap {
 
 
     //Extract-function for foundation ship
-    public void makeSingleShipInMap(int x, int y) {
+    private void makeSingleShipInMap(int x, int y) {
         engine.getShipSingle()[engine.getOneAmount()] = new ShipSingle(engine);
         cellMY[y * 10 + x].setShip(engine.getShipSingle()[engine.getOneAmount()]);
 

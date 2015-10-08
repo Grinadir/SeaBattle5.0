@@ -49,7 +49,7 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
 
 
         engine.getMap().registerObserver(this);
-        engine.getLogicMarked().registerObserver(this);
+        //engine.getLogicMarked().registerObserver(this);
         gui.setTaskSendCoordinateOfAttack(new TaskSendingTargetCoordinate(engine, clientServerConnector));
         for (int i = 0; i <= 99; ++i) {
             makeOneMyRegister(i);

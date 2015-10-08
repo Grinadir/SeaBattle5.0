@@ -8,12 +8,11 @@ public class Engine {
 
     private Status status;
     private Map map;
-    private LogicMarked logicMarked;
 
-    private InterfaceShip[] shipSingle = new ShipSingle[5];
-    private InterfaceShip[] shipDouble = new ShipDouble[4];
-    private InterfaceShip[] shipTriple = new ShipTriple[3];
-    private InterfaceShip shipQuadruple = new ShipQuadruple(this);
+    private ShipSingle[] shipSingle = new ShipSingle[5];
+    private ShipDouble[] shipDouble = new ShipDouble[4];
+    private ShipTriple[] shipTriple = new ShipTriple[3];
+    private ShipQuadruple shipQuadruple = new ShipQuadruple(this);
 
     private int countOfRectangleForDouble = 0;
     private int countOfRectangleForTriple = 0;
@@ -38,7 +37,7 @@ public class Engine {
 
     public Engine() {
         this.map = new Map(this);
-        this.logicMarked = new LogicMarked(map);
+        //this.logicMarked = new LogicMarked(map);
         this.status = new Status();
     }
 
@@ -204,9 +203,6 @@ public class Engine {
         return a && b && c && d;
     }
 
-    //public Rects getRects() {
-    //    return rects;
-    //}
 
     public int getTargetIndex() {
         return targetIndex;
@@ -220,17 +216,9 @@ public class Engine {
         return status;
     }
 
-    //public Gui getGui() {
-    //   return gui;
-    //}
 
     public Map getMap() {
         return map;
     }
-
-    public LogicMarked getLogicMarked() {
-        return logicMarked;
-    }
-
 
 }

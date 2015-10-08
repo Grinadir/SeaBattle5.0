@@ -83,7 +83,7 @@ public class Map implements ObservableMap {
             if (cellMY[i].getFettle().equals("ship")) {
                 cellMY[i].getFettle().equals("non");
                 engine.increaseAmountByOne("one");
-                engine.getLogicMarked().marketGreen(x, y);
+                new LogicMarked(this).marketGreen(x, y);
                 notify(x, y, "non");
             }
         } else if (isSelectedSingleShip(x, y)) {
@@ -127,11 +127,11 @@ public class Map implements ObservableMap {
 
         if (cellMY[x + 10 * y].getFettle() == "non" && engine.getShipSingle()[engine.getOneAmount()].make(x, y)) {
             cellMY[x + 10 * y].setFettle("ship");
-            engine.getLogicMarked().marketYellow(x, y);
+            new LogicMarked(this).marketYellow(x, y);
             notify(x, y, "ship");
         } else {
             engine.getShipSingle()[engine.getOneAmount()].clean();
-            engine.getLogicMarked().marketGreen(x, y);
+            new LogicMarked(this).marketGreen(x, y);
             cellMY[x + 10 * y].setFettle("non");
             notify(x, y, "non");
             cellMY[x + 10 * y].setShip(null);
@@ -151,13 +151,13 @@ public class Map implements ObservableMap {
             if (cellMY[x + 10 * y].getShip().make(x, y)) {
                 cellMY[x + 10 * y].setFettle("ship");
                 notify(x, y, "ship");
-                engine.getLogicMarked().marketYellow(x, y);
+                new LogicMarked(this).marketYellow(x, y);
                 if (engine.getSaveX() == x) {
-                    engine.getLogicMarked().marketYellow(x, y - 1);
-                    engine.getLogicMarked().marketYellow(x, y + 1);
+                    new LogicMarked(this).marketYellow(x, y - 1);
+                    new LogicMarked(this).marketYellow(x, y + 1);
                 } else if (engine.getSaveY() == y) {
-                    engine.getLogicMarked().marketYellow(x - 1, y);
-                    engine.getLogicMarked().marketYellow(x + 1, y);
+                    new LogicMarked(this).marketYellow(x - 1, y);
+                    new LogicMarked(this).marketYellow(x + 1, y);
                 }
             }
         }
@@ -183,9 +183,9 @@ public class Map implements ObservableMap {
             if (cellMY[x + 10 * y].getShip().make(x, y)) {
                 cellMY[x + 10 * y].setFettle("ship");
                 notify(x, y, "ship");
-                engine.getLogicMarked().marketYellow(engine.getSaveX(), engine.getSaveY());
-                engine.getLogicMarked().marketYellow(engine.getSaveX1(), engine.getSaveY1());
-                engine.getLogicMarked().marketYellow(x, y);
+                new LogicMarked(this).marketYellow(engine.getSaveX(), engine.getSaveY());
+                new LogicMarked(this).marketYellow(engine.getSaveX1(), engine.getSaveY1());
+                new LogicMarked(this).marketYellow(x, y);
             }
         }
     }
@@ -204,10 +204,10 @@ public class Map implements ObservableMap {
         } else if (engine.getCountOfRectangleForQuadruple() == 3 && cellMY[x + 10 * y].getShip().make(x, y)) {
             cellMY[x + 10 * y].setFettle("ship");
             notify(x, y, "ship");
-            engine.getLogicMarked().marketYellow(engine.getSaveX(), engine.getSaveY());
-            engine.getLogicMarked().marketYellow(engine.getSaveX1(), engine.getSaveY1());
-            engine.getLogicMarked().marketYellow(engine.getSaveX2(), engine.getSaveY2());
-            engine.getLogicMarked().marketYellow(x, y);
+            new LogicMarked(this).marketYellow(engine.getSaveX(), engine.getSaveY());
+            new LogicMarked(this).marketYellow(engine.getSaveX1(), engine.getSaveY1());
+            new LogicMarked(this).marketYellow(engine.getSaveX2(), engine.getSaveY2());
+            new LogicMarked(this).marketYellow(x, y);
         }
     }
 

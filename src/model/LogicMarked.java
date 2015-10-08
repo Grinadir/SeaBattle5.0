@@ -20,7 +20,7 @@ public class LogicMarked implements ObservableMap {
     public void setColorYellowRect(int x, int y) {
         if (!(map.getCellMY(x, y).getFettle().equals("ship") && !(map.getCellMY(x, y).getFettle().equals("nearship")))) {
             map.getCellMY(x, y).setFettle("nearship");
-            notify(x, y, "nearship");
+            map.notify(x, y, "nearship");
         }
     }
 
@@ -29,7 +29,7 @@ public class LogicMarked implements ObservableMap {
         if (map.getCellMY(x, y).getVeto() == 1) {
             map.getCellMY(x, y).setFettle("non");
             map.getCellMY(x, y).setVeto(map.getCellMY(x, y).getVeto() - 1);
-            notify(x, y, "non");
+            map.notify(x, y, "non");
         } else {
 
             map.getCellMY(x, y).setVeto(map.getCellMY(x, y).getVeto() - 1);

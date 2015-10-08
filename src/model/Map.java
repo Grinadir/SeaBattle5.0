@@ -251,42 +251,55 @@ public class Map implements ObservableMap {
     public void checkAndMarkEnemyField(int x, int y, String str, int ind1, int ind2, int ind3, int ind4) {
         if (str.equals("DAM")) {
             cellENEMY[y * 10 + x].setFettle("dam");
+            notify(x, y, "damageEnemy");
         } else if (str.equals("DESTROY")) {
             cellENEMY[y * 10 + x].setFettle("kill");
+            notify(x, y, "destroyEnemy");
             if (ind1 != INDEX_END_SHIP) {
                 cellENEMY[y * 10 + x].setFettle("kill");
+                notify(x, y, "destroyEnemy");
             }
             if (ind2 != INDEX_END_SHIP) {
                 cellENEMY[y * 10 + x].setFettle("kill");
+                notify(x, y, "destroyEnemy");
             }
             if (ind3 != INDEX_END_SHIP) {
                 cellENEMY[y * 10 + x].setFettle("kill");
+                notify(x, y, "destroyEnemy");
             }
             if (ind4 != INDEX_END_SHIP) {
                 cellENEMY[y * 10 + x].setFettle("kill");
+                notify(x, y, "destroyEnemy");
             }
         } else if (str.equals("MISS")) {
             cellENEMY[y * 10 + x].setFettle("miss");
+            notify(x, y, "missEnemy");
         }
     }
 
     public void selectTargetOfAttack(int x, int y) {
-        if ((coordOfAttackX != x) || (coordOfAttackY != y)) {
-            notify(coordOfAttackX, coordOfAttackY, "undoAttack");
-            coordOfAttackX = x;
-            coordOfAttackY = y;
-            notify(coordOfAttackX, coordOfAttackY, "Attack");
-        } else if ((coordOfAttackX == x) && (coordOfAttackY == y)) {
-            if (coordOfAttackY == 440 && coordOfAttackY == 440) {
+
+            if ((coordOfAttackX != x) || (coordOfAttackY != y)) {
+                if (cellENEMY[coordOfAttackY * 10 + coordOfAttackX].getFettle().equals("non")) {
+                    notify(coordOfAttackX, coordOfAttackY, "undoAttack");
+                }
                 coordOfAttackX = x;
                 coordOfAttackY = y;
                 notify(coordOfAttackX, coordOfAttackY, "Attack");
-            } else {
-                notify(coordOfAttackX, coordOfAttackY, "undoAttack");
-                coordOfAttackX = 440;
-                coordOfAttackY = 440;
+            } else if ((coordOfAttackX == x) && (coordOfAttackY == y)) {
+                if (coordOfAttackY == 440 && coordOfAttackY == 440) {
+                    coordOfAttackX = x;
+                    coordOfAttackY = y;
+                    notify(coordOfAttackX, coordOfAttackY, "Attack");
+                } else {
+                    if (cellENEMY[coordOfAttackY * 10 + coordOfAttackX].getFettle().equals("non")) {
+                        notify(coordOfAttackX, coordOfAttackY, "undoAttack");
+                    }
+                    coordOfAttackX = 440;
+                    coordOfAttackY = 440;
+                }
             }
-        }
+
 
 
     }

@@ -112,6 +112,18 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
             gui.getRects().getMyRect(x, y).setFill(Color.BLACK);
         }
 
+        if (fettle.equals("damageEnemy")) {
+            gui.getRects().getRectENEMY(x + y * 10).setFill(Color.ORANGE);
+        }
+
+        if (fettle.equals("destroyEnemy")) {
+            gui.getRects().getRectENEMY(x + y * 10).setFill(Color.BLACK);;
+        }
+
+        if (fettle.equals("missEnemy")) {
+            gui.getRects().getRectENEMY(x + y * 10).setFill(Color.YELLOW);;
+        }
+
     }
 
 

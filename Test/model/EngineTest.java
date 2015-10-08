@@ -248,7 +248,7 @@ public class EngineTest {
 
             }
         }
-//FIXME find BUG! Quadruple ship don,t marked when it attack
+
         assertEquals(
                 "X0X0X0X000\n" +
                         "0000000000\n" +
@@ -257,7 +257,7 @@ public class EngineTest {
                         "##X0##X000\n" +
                         "0000000000\n" +
                         "0000000000\n" +
-                        "0###000000\n" +
+                        "0###X00000\n" +
                         "0000000000\n" +
                         "0000000000\n", mapToStringCheckFettle(map));
 

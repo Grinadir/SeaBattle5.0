@@ -139,14 +139,14 @@ public class Map implements ObservableMap {
     }
 
     private void makeDoubleShipForThreeInMap(int x, int y) {
-        if (engine.getCount2() == 0) {
+        if (engine.getCountOfRectangleForDouble() == 0) {
             engine.getShipDouble()[engine.getTwoAmount()] = new ShipDouble(engine);
             cellMY[x + 10 * y].setShip(engine.getShipDouble()[engine.getTwoAmount()]);
             if (cellMY[x + 10 * y].getShip().make(x, y)) {
                 cellMY[x + 10 * y].setFettle("ship");
                 notify(x, y, "ship");
             }
-        } else if (engine.getCount2() == 1 && engine.getTwoAmount() != -1) {
+        } else if (engine.getCountOfRectangleForDouble() == 1 && engine.getTwoAmount() != -1) {
             cellMY[x + 10 * y].setShip(engine.getShipDouble()[engine.getTwoAmount()]);
             if (cellMY[x + 10 * y].getShip().make(x, y)) {
                 cellMY[x + 10 * y].setFettle("ship");
@@ -165,20 +165,20 @@ public class Map implements ObservableMap {
 
     private void makeTripleShipForBothInMap(int x, int y) {
 
-        if (engine.getCount3() == 0 && engine.getThreeAmount() != -1) {
+        if (engine.getCountOfRectangleForTriple() == 0 && engine.getThreeAmount() != -1) {
             engine.getShipTriple()[engine.getThreeAmount()] = new ShipTriple(engine);
             cellMY[x + 10 * y].setShip(engine.getShipTriple()[engine.getThreeAmount()]);
             if (cellMY[x + 10 * y].getShip().make(x, y)) {
                 cellMY[x + 10 * y].setFettle("ship");
                 notify(x, y, "ship");
             }
-        } else if (engine.getCount3() == 1 && engine.getThreeAmount() != -1) {
+        } else if (engine.getCountOfRectangleForTriple() == 1 && engine.getThreeAmount() != -1) {
             cellMY[x + 10 * y].setShip(engine.getShipTriple()[engine.getThreeAmount()]);
             if (cellMY[x + 10 * y].getShip().make(x, y)) {
                 cellMY[x + 10 * y].setFettle("ship");
                 notify(x, y, "ship");
             }
-        } else if (engine.getCount3() == 2 && engine.getThreeAmount() != -1) {
+        } else if (engine.getCountOfRectangleForTriple() == 2 && engine.getThreeAmount() != -1) {
             cellMY[x + 10 * y].setShip(engine.getShipTriple()[engine.getThreeAmount()]);
             if (cellMY[x + 10 * y].getShip().make(x, y)) {
                 cellMY[x + 10 * y].setFettle("ship");
@@ -192,16 +192,16 @@ public class Map implements ObservableMap {
 
     private void makeQuadrupleShipInMap(int x, int y) {
         cellMY[x + 10 * y].setShip(engine.getShipQuadruple());
-        if (engine.getCount4() == 0 && cellMY[x + 10 * y].getShip().make(x, y)) {
+        if (engine.getCountOfRectangleForQuadruple() == 0 && cellMY[x + 10 * y].getShip().make(x, y)) {
             cellMY[x + 10 * y].setFettle("ship");
             notify(x, y, "ship");
-        } else if (engine.getCount4() == 1 && cellMY[x + 10 * y].getShip().make(x, y)) {
+        } else if (engine.getCountOfRectangleForQuadruple() == 1 && cellMY[x + 10 * y].getShip().make(x, y)) {
             cellMY[x + 10 * y].setFettle("ship");
             notify(x, y, "ship");
-        } else if (engine.getCount4() == 2 && cellMY[x + 10 * y].getShip().make(x, y)) {
+        } else if (engine.getCountOfRectangleForQuadruple() == 2 && cellMY[x + 10 * y].getShip().make(x, y)) {
             cellMY[x + 10 * y].setFettle("ship");
             notify(x, y, "ship");
-        } else if (engine.getCount4() == 3 && cellMY[x + 10 * y].getShip().make(x, y)) {
+        } else if (engine.getCountOfRectangleForQuadruple() == 3 && cellMY[x + 10 * y].getShip().make(x, y)) {
             cellMY[x + 10 * y].setFettle("ship");
             notify(x, y, "ship");
             engine.getLogicMarked().marketYellow(engine.getSaveX(), engine.getSaveY());

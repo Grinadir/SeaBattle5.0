@@ -15,9 +15,9 @@ public class Engine {
     private InterfaceShip[] shipTriple = new ShipTriple[3];
     private InterfaceShip shipQuadruple = new ShipQuadruple(this);
 
-    private int count2 = 0;
-    private int count3 = 0;
-    private int count4 = 0;
+    private int countOfRectangleForDouble = 0;
+    private int countOfRectangleForTriple = 0;
+    private int countOfRectangleForQuadruple = 0;
 
     private int oneAmount = 4;
     private int twoAmount = 3;
@@ -58,28 +58,28 @@ public class Engine {
         return shipQuadruple;
     }
 
-    public int getCount2() {
-        return count2;
+    public int getCountOfRectangleForDouble() {
+        return countOfRectangleForDouble;
     }
 
-    public void setCount2(int count2) {
-        this.count2 = count2;
+    public void setCountOfRectangleForDouble(int countOfRectangleForDouble) {
+        this.countOfRectangleForDouble = countOfRectangleForDouble;
     }
 
-    public int getCount3() {
-        return count3;
+    public int getCountOfRectangleForTriple() {
+        return countOfRectangleForTriple;
     }
 
-    public void setCount3(int count3) {
-        this.count3 = count3;
+    public void setCountOfRectangleForTriple(int countOfRectangleForTriple) {
+        this.countOfRectangleForTriple = countOfRectangleForTriple;
     }
 
-    public int getCount4() {
-        return count4;
+    public int getCountOfRectangleForQuadruple() {
+        return countOfRectangleForQuadruple;
     }
 
-    public void setCount4(int count4) {
-        this.count4 = count4;
+    public void setCountOfRectangleForQuadruple(int countOfRectangleForQuadruple) {
+        this.countOfRectangleForQuadruple = countOfRectangleForQuadruple;
     }
 
     public int getOneAmount() {

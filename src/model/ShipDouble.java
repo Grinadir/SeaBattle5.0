@@ -17,20 +17,20 @@ public class ShipDouble implements InterfaceShip {
 
     @Override
     public boolean make(int x, int y) {
-        if (engine.getCount2() == 0) {
+        if (engine.getCountOfRectangleForDouble() == 0) {
             xNO1 = x;
             yNO1 = y;
             engine.setSaveX(x);
             engine.setSaveY(y);
-            engine.setCount2(engine.getCount2() + 1);
+            engine.setCountOfRectangleForDouble(engine.getCountOfRectangleForDouble() + 1);
             return true;
         } else if ((engine.getSaveX() == x || engine.getSaveY() == y)
-                && engine.getCount2() != 0
+                && engine.getCountOfRectangleForDouble() != 0
                 && (engine.getSaveX() == x + 1 || engine.getSaveY() == y + 1
                 || engine.getSaveX() == x - 1 || engine.getSaveY() == y - 1)) {
             xNO2 = x;
             yNO2 = y;
-            engine.setCount2(0);
+            engine.setCountOfRectangleForDouble(0);
             engine.decreaseAmountByOne("two");
             return true;
         }

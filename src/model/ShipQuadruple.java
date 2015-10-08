@@ -24,31 +24,31 @@ public class ShipQuadruple implements InterfaceShip {
 
     @Override
     public boolean make(int x, int y) {
-        if (engine.getCount4() == 0) {
+        if (engine.getCountOfRectangleForQuadruple() == 0) {
             xNO1 = x;
             yNO1 = y;
             engine.setSaveX(x);
             engine.setSaveY(y);
-            engine.setCount4(engine.getCount4() + 1);
+            engine.setCountOfRectangleForQuadruple(engine.getCountOfRectangleForQuadruple() + 1);
             return true;
-        } else if ((xNO1 == x || yNO1 == y) && engine.getCount4() == 1
+        } else if ((xNO1 == x || yNO1 == y) && engine.getCountOfRectangleForQuadruple() == 1
                 && (xNO1 == x + 1 || yNO1 == y + 1 || xNO1 == x - 1 || yNO1 == y - 1)
                 && engine.getFourAmount() != 0) {
             xNO2 = x;
             yNO2 = y;
             engine.setSaveX1(x);
             engine.setSaveY1(y);
-            engine.setCount4(engine.getCount4() + 1);
+            engine.setCountOfRectangleForQuadruple(engine.getCountOfRectangleForQuadruple() + 1);
             return true;
         } else if ((xNO1 == x || yNO1 == y) && engine.getFourAmount() != 0
-                && engine.getCount4() == 2) {
+                && engine.getCountOfRectangleForQuadruple() == 2) {
             if (xNO2 == x
                     && (yNO2 == y + 1 || yNO2 == y - 1)) {
                 xNO3 = x;
                 yNO3 = y;
                 engine.setSaveX2(x);
                 engine.setSaveY2(y);
-                engine.setCount4(engine.getCount4() + 1);
+                engine.setCountOfRectangleForQuadruple(engine.getCountOfRectangleForQuadruple() + 1);
                 return true;
             } else if (yNO1 == y
                     && (xNO2 == x + 1 || xNO2 == x - 1)) {
@@ -56,24 +56,24 @@ public class ShipQuadruple implements InterfaceShip {
                 yNO3 = y;
                 engine.setSaveX2(x);
                 engine.setSaveY2(y);
-                engine.setCount4(engine.getCount4() + 1);
+                engine.setCountOfRectangleForQuadruple(engine.getCountOfRectangleForQuadruple() + 1);
                 return true;
             }
-        } else if ((xNO1 == x || yNO1 == y) && engine.getCount4() == 3
+        } else if ((xNO1 == x || yNO1 == y) && engine.getCountOfRectangleForQuadruple() == 3
                 && engine.getFourAmount() != 0) {
             if (xNO3 == x
                     && (yNO3 == y + 1 || yNO3 == y - 1)) {
                 xNO4 = x;
                 yNO4 = y;
-                engine.setCount4(0);
+                engine.setCountOfRectangleForQuadruple(0);
                 engine.decreaseAmountByOne("four");
                 return true;
             } else if (yNO3 == y
                     && (xNO3 == x + 1 || xNO3 == x - 1)
-                    && engine.getThreeAmount() != 0) {
+                    && engine.getFourAmount() != 0) {
                 xNO4 = x;
                 yNO4 = y;
-                engine.setCount4(0);
+                engine.setCountOfRectangleForQuadruple(0);
                 engine.decreaseAmountByOne("four");
                 return true;
             }

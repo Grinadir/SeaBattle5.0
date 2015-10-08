@@ -265,6 +265,27 @@ public class EngineTest {
 
     }
 
+    @Test
+    public void testEnemyField() {
+        Engine engine = new Engine();
+        Map map = engine.getMap();
+        map.checkAndMarkEnemyField(0,0,"DESTROY",4400,4400,4400,4400);
+        map.checkAndMarkEnemyField(0,2,"DESTROY",0,1,4400,4400);
+
+        assertEquals(
+                "X---------\n" +
+                        "----------\n" +
+                        "X---------\n" +
+                        "----------\n" +
+                        "----------\n" +
+                        "----------\n" +
+                        "----------\n" +
+                        "----------\n" +
+                        "----------\n" +
+                        "----------\n", mapToStringEnemy(map));
+
+    }
+
 
 
     private String mapToString(Map map) {
@@ -306,6 +327,28 @@ public class EngineTest {
                 }
                 else {
                     buffer.append('0');
+                }
+            }
+            buffer.append("\n");
+        }
+        return buffer.toString();
+    }
+
+    private String mapToStringEnemy(Map map) {
+        StringBuffer buffer = new StringBuffer();
+        for (int y = 0; y < 10; y++) {
+            for (int x = 0; x < 10; x++) {
+                Cell cell = map.getCellENEMY(x + y * 10);
+                if (cell.getFettle().equals("dam")) {
+                    buffer.append('#');
+                } else if (cell.getFettle().equals("kill")){
+                    buffer.append('X');
+                }
+                else if (cell.getFettle().equals("miss")){
+                    buffer.append('0');
+                }
+                else {
+                    buffer.append('-');
                 }
             }
             buffer.append("\n");

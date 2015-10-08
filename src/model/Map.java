@@ -250,23 +250,23 @@ public class Map implements ObservableMap {
 
     public void checkAndMarkEnemyField(int x, int y, String str, int ind1, int ind2, int ind3, int ind4) {
         if (str.equals("DAM")) {
-            cellMY[y * 10 + x].setFettle("dam");
+            cellENEMY[y * 10 + x].setFettle("dam");
         } else if (str.equals("DESTROY")) {
-            cellMY[y * 10 + x].setFettle("kill");
+            cellENEMY[y * 10 + x].setFettle("kill");
             if (ind1 != INDEX_END_SHIP) {
-                cellMY[y * 10 + x].setFettle("kill");
+                cellENEMY[y * 10 + x].setFettle("kill");
             }
             if (ind2 != INDEX_END_SHIP) {
-                cellMY[y * 10 + x].setFettle("kill");
+                cellENEMY[y * 10 + x].setFettle("kill");
             }
             if (ind3 != INDEX_END_SHIP) {
-                cellMY[y * 10 + x].setFettle("kill");
+                cellENEMY[y * 10 + x].setFettle("kill");
             }
             if (ind4 != INDEX_END_SHIP) {
-                cellMY[y * 10 + x].setFettle("kill");
+                cellENEMY[y * 10 + x].setFettle("kill");
             }
         } else if (str.equals("MISS")) {
-            cellMY[y * 10 + x].setFettle("miss");
+            cellENEMY[y * 10 + x].setFettle("miss");
         }
     }
 

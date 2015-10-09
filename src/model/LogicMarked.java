@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 public class LogicMarked {
 
-    private Map map;
+    private ObservableMap map;
 
 
-    public LogicMarked(Map map) {
+    public LogicMarked(ObservableMap map) {
         this.map = map;
     }
 

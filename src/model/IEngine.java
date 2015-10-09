@@ -4,7 +4,7 @@ package model;
  * Created by User on 09.10.2015.
  */
 public interface IEngine {
-    Map getMap();
+    ObservableMap getMap();
     int getOneAmount();
     int getTwoAmount();
     int getThreeAmount();

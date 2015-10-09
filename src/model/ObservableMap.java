@@ -11,4 +11,6 @@ public interface ObservableMap {
     void removeObserver(ObserverOfMap o);
 
     void notify(int x, int y, String fettle);
+
+    Cell getCellMY(int x, int y);
 }

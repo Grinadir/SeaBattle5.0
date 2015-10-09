@@ -6,7 +6,7 @@ package model;
  */
 public class ShipQuadruple implements InterfaceShip {
 
-    private Engine engine;
+    private IEngine engine;
     private int countOfAliveRect = 4;
 
     private int xNO1;
@@ -18,7 +18,7 @@ public class ShipQuadruple implements InterfaceShip {
     private int xNO4;
     private int yNO4;
 
-    public ShipQuadruple(Engine engine) {
+    public ShipQuadruple(IEngine engine) {
         this.engine = engine;
     }
 

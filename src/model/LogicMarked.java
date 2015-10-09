@@ -6,14 +6,12 @@ import java.util.ArrayList;
 /**
  * Created by User on 08.06.2015.
  */
-public class LogicMarked implements ObservableMap {
+public class LogicMarked {
 
     private Map map;
 
-    private ArrayList observers;
 
     public LogicMarked(Map map) {
-        observers = new ArrayList();
         this.map = map;
     }
 
@@ -71,22 +69,6 @@ public class LogicMarked implements ObservableMap {
                 }
             }
         }
-    }
 
-    @Override
-    public void registerObserver(ObserverOfMap o) {
-        observers.add(o);
-    }
-
-    @Override
-    public void removeObserver(ObserverOfMap o) {
-    }
-
-    @Override
-    public void notify(int x, int y, String fettle) {
-        for (int i = 0; i < observers.size(); i++) {
-            ObserverOfMap observer = (ObserverOfMap) observers.get(i);
-            observer.updateModelMap(x, y, fettle);
-        }
     }
 }

@@ -6,7 +6,7 @@ package model;
  */
 public class ShipTriple implements InterfaceShip {
     private final int NONEXISTENT_COORDINATE = 400;
-    private Engine engine;
+    private IEngine engine;
     private int countOfAliveRect = 3;
     private int xNO1;
     private int yNO1;
@@ -15,7 +15,7 @@ public class ShipTriple implements InterfaceShip {
     private int xNO3;
     private int yNO3;
 
-    public ShipTriple(Engine engine) {
+    public ShipTriple(IEngine engine) {
         this.engine = engine;
     }
 

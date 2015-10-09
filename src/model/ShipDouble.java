@@ -4,14 +4,14 @@ package model;
 public class ShipDouble implements InterfaceShip {
 
     private final int NONEXISTENT_COORDINATE = 400;
-    private Engine engine;
+    private IEngine engine;
     private int countOfAliveRect = 2;
     private int xNO1;
     private int yNO1;
     private int xNO2;
     private int yNO2;
 
-    public ShipDouble(Engine engine) {
+    public ShipDouble(IEngine engine) {
         this.engine = engine;
     }
 

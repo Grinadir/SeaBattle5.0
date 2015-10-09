@@ -1,12 +1,11 @@
 package model;
 
-
 /**
- * Created by User on 23.04.2015.
+ * Created by User on 09.10.2015.
  */
-public class Engine implements IEngine{
+public class Data {
 
-    private Status status;
+   /* private Status status;
     private Map map;
 
     private ShipSingle[] shipSingle = new ShipSingle[5];
@@ -41,23 +40,22 @@ public class Engine implements IEngine{
         this.status = new Status();
     }
 
-    public ShipSingle[] getShipSingle() {
+    public InterfaceShip[] getShipSingle() {
         return shipSingle;
     }
 
-    public ShipDouble[] getShipDouble() {
+    public InterfaceShip[] getShipDouble() {
         return shipDouble;
     }
 
-    public ShipTriple[] getShipTriple() {
+    public InterfaceShip[] getShipTriple() {
         return shipTriple;
     }
 
-    public ShipQuadruple getShipQuadruple() {
+    public InterfaceShip getShipQuadruple() {
         return shipQuadruple;
     }
 
-    @Override
     public int getCountOfRectangleForDouble() {
         return countOfRectangleForDouble;
     }
@@ -221,5 +219,5 @@ public class Engine implements IEngine{
     public Map getMap() {
         return map;
     }
-
+*/
 }

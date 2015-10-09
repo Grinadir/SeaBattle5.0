@@ -6,12 +6,12 @@ package model;
  */
 public class ShipSingle implements InterfaceShip {
     private final int NONEXISTENT_COORDINATE = 400;
-    private Engine engine;
+    private IEngine engine;
     private int countOfAliveRect = 1;
     private int xNO1;
     private int yNO1;
 
-    public ShipSingle(Engine engine) {
+    public ShipSingle(IEngine engine) {
         this.engine = engine;
     }
 

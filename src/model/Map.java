@@ -10,7 +10,7 @@ public class Map implements ObservableMap {
 
 
     private final int INDEX_END_SHIP = 4400;
-    private final Engine engine;
+    private final IEngine engine;
     private final int OUT_OF_FIELD = 18;
     private Cell[] cellMY = new Cell[100];
     private Cell[] cellENEMY = new Cell[100];
@@ -19,7 +19,7 @@ public class Map implements ObservableMap {
     private int coordOfAttackY;
     private Choose choose;
 
-    public Map(Engine engine) {
+    public Map(IEngine engine) {
         this.engine = engine;
         makeEnemyAndMyCells();
         observers = new ArrayList();

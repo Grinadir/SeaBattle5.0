@@ -1,8 +1,6 @@
 package model;
 
 
-import net.ObserverOfMap;
-
 import java.util.ArrayList;
 
 /**

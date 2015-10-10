@@ -138,4 +138,5 @@ public class ShipQuadruple implements InterfaceShip {
     public int getY4() {
         return yNO4;
     }
+
 }

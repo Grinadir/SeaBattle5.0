@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.SocketException;
 import java.util.ArrayList;
 
-public class ClientServerConnector implements ObservableModelIncomingMessage {
+public class ClientServerConnector implements ObservableClientServerConnector {
     private Server server;
     private Client client;
     private SystemOfIncomingMessage systemOfIncomingMessage;

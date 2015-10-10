@@ -2,7 +2,6 @@ package controller;
 
 import javafx.concurrent.Task;
 import net.ClientServerConnector;
-import net.SendingTargetCoordinate;
 
 /**
  * Created by User on 01.07.2015.

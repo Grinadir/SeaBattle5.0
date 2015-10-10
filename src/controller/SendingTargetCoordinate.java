@@ -1,4 +1,4 @@
-package net;
+package controller;
 
 /**
  * Created by Selkov Alexsandr on 22.02.2015.
@@ -6,6 +6,7 @@ package net;
 
 
 import model.Engine;
+import net.ClientServerConnector;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

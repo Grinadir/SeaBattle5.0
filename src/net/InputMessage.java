@@ -3,20 +3,17 @@ package net;
 
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
-public class InputMessage implements ObservableModelIncomingMessage {
+public class InputMessage {
 
-    private ClientServerConnector connector;
+    private ObservableClientServerConnector connector;
     private DataInputStream dataInputStreamFromInputMessage;
-    private ArrayList observers;
     private String strForTest;
 
-    public InputMessage(ClientServerConnector connector, DataInputStream in) {
+    public InputMessage(ObservableClientServerConnector connector, DataInputStream in) {
         this.connector = connector;
         this.dataInputStreamFromInputMessage = in;
-        observers = new ArrayList();
     }
 
     public String getStrForTest() {
@@ -27,31 +24,8 @@ public class InputMessage implements ObservableModelIncomingMessage {
         String line;
         line = dataInputStreamFromInputMessage.readUTF();
         System.out.println(line);
-        //notify(line);
         connector.updateMessage(line);
-
         strForTest = line;
-
-    }
-
-
-    @Override
-    public void registerObserver(ObserverOfModelIncomingMessage o) {
-        observers.add(o);
-
-    }
-
-    @Override
-    public void removeObserver(ObserverOfModelIncomingMessage o) {
-
-    }
-
-    @Override
-    public void notify(String message) {
-        for (int i = 0; i < observers.size(); i++) {
-            ObserverOfModelIncomingMessage observer = (ObserverOfModelIncomingMessage) observers.get(i);
-            observer.updateModelIncomingMessage(message);
-        }
 
     }
 }

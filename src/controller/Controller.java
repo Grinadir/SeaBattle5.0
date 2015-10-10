@@ -6,10 +6,9 @@ import javafx.concurrent.Task;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Engine;
+import model.ObserverOfMap;
 import net.ObserverOfModelIncomingMessage;
 import net.ClientServerConnector;
-import net.ObserverOfMap;
-import net.WorkWithIncomingMessage;
 import view.ObserverOfGuiSendingMessage;
 import view.ObserverOfGuiSendingTargetCoord;
 

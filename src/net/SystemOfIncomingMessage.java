@@ -6,10 +6,10 @@ import java.io.InputStream;
 
 public class SystemOfIncomingMessage {
 
-    private ClientServerConnector connector;
+    private ObservableClientServerConnector connector;
     private InputMessage inputMessage;
 
-    SystemOfIncomingMessage(ClientServerConnector connector) {
+    SystemOfIncomingMessage(ObservableClientServerConnector connector) {
         this.connector = connector;
     }
 

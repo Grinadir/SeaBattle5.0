@@ -1,8 +1,9 @@
-package net;
+package controller;
 
 
 import model.Cell;
 import model.Engine;
+import net.ClientServerConnector;
 
 import java.io.DataOutputStream;
 import java.util.Date;

@@ -5,9 +5,6 @@ package net;
  */
 
 
-import model.ObservableModelIncomingMessage;
-import model.ObserverOfModelIncomingMessage;
-
 import java.io.IOException;
 import java.net.SocketException;
 import java.util.ArrayList;

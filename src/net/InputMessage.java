@@ -1,9 +1,6 @@
 package net;
 
 
-import model.ObservableModelIncomingMessage;
-import model.ObserverOfModelIncomingMessage;
-
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.ArrayList;

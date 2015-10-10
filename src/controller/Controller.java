@@ -6,8 +6,9 @@ import javafx.concurrent.Task;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Engine;
-import model.ObserverOfModelIncomingMessage;
+import net.ObserverOfModelIncomingMessage;
 import net.ClientServerConnector;
+import net.ObserverOfMap;
 import net.WorkWithIncomingMessage;
 import view.ObserverOfGuiSendingMessage;
 import view.ObserverOfGuiSendingTargetCoord;
@@ -18,7 +19,7 @@ import java.util.Date;
 /**
  * Created by User on 17.06.2015.
  */
-public class Controller extends Application implements model.ObserverOfMap, ObserverOfModelIncomingMessage, view.ObserverOfGuiSendingMessage, view.ObserverOfGuiMyRectangle, view.ObserverOfGuiEnemyRectangle, ObserverOfGuiSendingTargetCoord {
+public class Controller extends Application implements ObserverOfMap, ObserverOfModelIncomingMessage, view.ObserverOfGuiSendingMessage, view.ObserverOfGuiMyRectangle, view.ObserverOfGuiEnemyRectangle, ObserverOfGuiSendingTargetCoord {
     private view.Gui gui;
     private ClientServerConnector clientServerConnector;
     private TaskClientServerConnector taskClientServerConnector;
@@ -39,17 +40,11 @@ public class Controller extends Application implements model.ObserverOfMap, Obse
 
 
         taskClientServerConnector = new TaskClientServerConnector(clientServerConnector);
-
         gui.setTaskConnection(taskClientServerConnector);
-
-        System.out.println(taskClientServerConnector.getValue());
         clientServerConnector.registerObserver(this);
         gui.registerObserver((ObserverOfGuiSendingMessage) this);
         gui.registerObserver((ObserverOfGuiSendingTargetCoord) this);
-
-
         engine.getMap().registerObserver(this);
-        //engine.getLogicMarked().registerObserver(this);
         gui.setTaskSendCoordinateOfAttack(new TaskSendingTargetCoordinate(engine, clientServerConnector));
         for (int i = 0; i <= 99; ++i) {
             makeOneMyRegister(i);

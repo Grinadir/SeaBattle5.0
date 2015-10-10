@@ -50,11 +50,7 @@ public class SendingTargetCoordinate {
             int y = engine.getMap().getCoordOfAttackY();
             String reportResultOfAttack = String.format("#attack of  %s (I AM) (%s) attacked coordinates: $%d%%%d*;",
                     s, currentDate, x, y);
-            //updateMessage(reportResultOfAttack);
-
             out.writeUTF(reportResultOfAttack);
-            System.out.println("ОГОНЬ!");
-            //updateMessage("");
         } catch (IOException e1) {
             e1.printStackTrace();
         }

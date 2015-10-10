@@ -1,6 +1,8 @@
 package model;
 
 
+import net.ObserverOfMap;
+
 /**
  * Created by User on 10.06.2015.
  */

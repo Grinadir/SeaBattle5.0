@@ -7,11 +7,13 @@ public class Rects {
 
     private MyRectangle[] rectMY = new MyRectangle[100];
     private EnemyRectangle[] rectENEMY = new EnemyRectangle[100];
-    private Gui gui;
+    private ObservableGui gui;
 
 
-    public Rects(Gui gui) {
-        this.gui = gui;
+
+
+    public Rects(ObservableGui gui) {
+        this.gui=gui;
         makeEnemyAndMyField();
 
 
@@ -23,7 +25,7 @@ public class Rects {
         int numLine = (int) (10 - (10 - i * 0.1));
         rectMY[i].setXinMyRect(i - numLine * 10);
         rectMY[i].setYinMyRect(numLine);
-        gui.addMySeaField(rectMY[i], (i - numLine * 10), numLine);
+
     }
 
     private void makeOneIterationRectENEMY(int i) {
@@ -32,7 +34,7 @@ public class Rects {
         int numLine = (int) (10 - (10 - i * 0.1));
         rectENEMY[i].setXEnemyRect(i - numLine * 10);
         rectENEMY[i].setYEnemyRect(numLine);
-        gui.addEnemySeaField(rectENEMY[i], (i - numLine * 10), numLine);
+
     }
 
     public void makeEnemyAndMyField() {

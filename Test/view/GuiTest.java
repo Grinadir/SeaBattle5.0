@@ -15,7 +15,7 @@ public class GuiTest {
     public  void testMyField(){
 
         Gui gui=new Gui();
-        Rects rects=new Rects(gui);
+       // Rects rects=new Rects(gui);
         for(int i=0; i<=99; i++){
             int y=(int) i/10;
             int x=i-y*10;

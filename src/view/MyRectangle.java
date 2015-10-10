@@ -22,11 +22,11 @@ public class MyRectangle extends Rectangle implements ObservableGuiMyRectangle {
     private int x;
     private int y;
     private int veto = 0;
-    private Gui gui;
+    protected ObservableGui gui;
     private ArrayList observers;
 
-    public MyRectangle(double width, double height, Gui gui) {
-        this.gui = gui;
+    public MyRectangle(double width, double height, ObservableGui gui) {
+        this.gui=gui;
         setWidth(width);
         setHeight(height);
         observers = new ArrayList();

@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Gui extends Application implements ObservableGuiSendingMessage, ObservableGuiSendingTargetCoord {
+public class Gui extends Application implements ObservableGuiSendingMessage, ObservableGuiSendingTargetCoord, ObservableGui {
 
 
     private TextArea commonChat = new TextArea();
@@ -47,7 +47,7 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
     private GridPane myPane = new GridPane();
     private GridPane enemySeaField = new GridPane();
     private GridPane shipType = new GridPane();
-    private Rects rects = new Rects(this);
+    private Rects rects=new Rects(this);
 
     public static void main(String[] args) throws Exception {
         launch(args);
@@ -113,6 +113,9 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
         myPane.add(sendingMessage, 0, 12, 2, 1);
         myPane.add(bsendMessage, 0, 13, 1, 1);
         myPane.add(bStart, 0, 14, 5, 1);
+
+
+
 
 
         bStart.setOnMouseClicked(new EventHandler<Event>() {
@@ -213,6 +216,14 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
         //rects.makeEnemyAndMyField();
 
 
+        for (int i = 0; i <= 99; ++i) {
+            int numLine = (int) (10 - (10 - i * 0.1));
+            addMySeaField(rects.getMyRect((i-10*numLine),numLine),(i-10*numLine), numLine);
+            addEnemySeaField(rects.getRectENEMY(i),(i-10*numLine), numLine);
+
+        }
+
+
         Scene scene = new Scene(myPane, 500, 600);
 
         primaryStage.setScene(scene);
@@ -243,6 +254,7 @@ public class Gui extends Application implements ObservableGuiSendingMessage, Obs
         return sendingMessage;
     }
 
+    @Override
     public Settings getSettings() {
         return new Settings() {
 
